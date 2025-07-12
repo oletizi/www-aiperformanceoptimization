@@ -1,0 +1,552 @@
+---
+// SEO metadata
+const title = "AI Cost Management Tools: Top Platforms for Optimizing AI Expenses";
+const description = "Discover the best AI cost management tools and platforms. Compare features, pricing, and capabilities to find the right solution for your AI optimization needs.";
+const canonicalURL = "https://yourdomain.com/tools";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content="AI cost management tools, AI optimization platforms, machine learning cost tracking, AI monitoring tools, cost analysis software" />
+		<meta name="author" content="AI Cost Management Experts" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/og-image.jpg" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content="/og-image.jpg" />
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href={canonicalURL} />
+		
+		<!-- Structured Data -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebPage",
+			"name": "AI Cost Management Tools",
+			"description": "Discover the best AI cost management tools and platforms for optimizing AI expenses",
+			"url": "https://yourdomain.com/tools"
+		}
+		</script>
+		
+		<!-- Styles -->
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			
+			body {
+				font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+				line-height: 1.6;
+				color: #333;
+				background-color: #fafafa;
+			}
+			
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+			
+			header {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				padding: 1rem 0;
+				box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+			}
+			
+			nav {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			
+			nav ul {
+				display: flex;
+				list-style: none;
+				gap: 2rem;
+			}
+			
+			nav a {
+				color: white;
+				text-decoration: none;
+				font-weight: 500;
+				transition: opacity 0.3s;
+			}
+			
+			nav a:hover {
+				opacity: 0.8;
+			}
+			
+			.page-header {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				padding: 3rem 0;
+				text-align: center;
+			}
+			
+			.page-header h1 {
+				font-size: 2.5rem;
+				margin-bottom: 1rem;
+				font-weight: 700;
+			}
+			
+			main {
+				padding: 4rem 0;
+			}
+			
+			.tools-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+				gap: 2rem;
+				margin: 3rem 0;
+			}
+			
+			.tool-card {
+				background: white;
+				border-radius: 15px;
+				overflow: hidden;
+				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+				transition: transform 0.3s, box-shadow 0.3s;
+			}
+			
+			.tool-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+			}
+			
+			.tool-header {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				padding: 1.5rem;
+				text-align: center;
+			}
+			
+			.tool-header h3 {
+				font-size: 1.5rem;
+				margin-bottom: 0.5rem;
+			}
+			
+			.tool-header .category {
+				background: rgba(255,255,255,0.2);
+				padding: 0.25rem 0.75rem;
+				border-radius: 20px;
+				font-size: 0.9rem;
+				display: inline-block;
+			}
+			
+			.tool-content {
+				padding: 1.5rem;
+			}
+			
+			.tool-content p {
+				color: #666;
+				margin-bottom: 1rem;
+			}
+			
+			.features-list {
+				list-style: none;
+				margin: 1rem 0;
+			}
+			
+			.features-list li {
+				padding: 0.5rem 0;
+				border-bottom: 1px solid #eee;
+				color: #666;
+			}
+			
+			.features-list li:before {
+				content: "✓";
+				color: #667eea;
+				font-weight: bold;
+				margin-right: 0.5rem;
+			}
+			
+			.pricing-info {
+				background: #f8f9fa;
+				padding: 1rem;
+				border-radius: 8px;
+				margin-top: 1rem;
+				text-align: center;
+			}
+			
+			.pricing-info .price {
+				font-size: 1.2rem;
+				font-weight: bold;
+				color: #667eea;
+			}
+			
+			.cta-button {
+				display: inline-block;
+				background: #667eea;
+				color: white;
+				padding: 0.75rem 1.5rem;
+				text-decoration: none;
+				border-radius: 25px;
+				font-weight: 600;
+				margin-top: 1rem;
+				transition: background 0.3s;
+			}
+			
+			.cta-button:hover {
+				background: #5a6fd8;
+			}
+			
+			.category-section {
+				margin: 4rem 0;
+			}
+			
+			.category-section h2 {
+				text-align: center;
+				font-size: 2.5rem;
+				margin-bottom: 2rem;
+				color: #333;
+			}
+			
+			footer {
+				background: #333;
+				color: white;
+				padding: 2rem 0;
+				text-align: center;
+			}
+			
+			@media (max-width: 768px) {
+				nav ul {
+					flex-direction: column;
+					gap: 1rem;
+				}
+				
+				.page-header h1 {
+					font-size: 2rem;
+				}
+				
+				.tools-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<nav class="container">
+				<div class="logo">
+					<h2>AI Cost Manager</h2>
+				</div>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/strategies">Strategies</a></li>
+					<li><a href="/tools">Tools</a></li>
+					<li><a href="/case-studies">Case Studies</a></li>
+					<li><a href="/blog">Blog</a></li>
+					<li><a href="/contact">Contact</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<section class="page-header">
+			<div class="container">
+				<h1>AI Cost Management Tools</h1>
+				<p>Discover the best platforms and tools for optimizing your AI expenses</p>
+			</div>
+		</section>
+
+		<main class="container">
+			<section class="category-section">
+				<h2>Cost Monitoring and Analytics Tools</h2>
+				<div class="tools-grid">
+					<article class="tool-card">
+						<div class="tool-header">
+							<h3>CloudHealth by VMware</h3>
+							<span class="category">Cost Management</span>
+						</div>
+						<div class="tool-content">
+							<p>Comprehensive cloud cost management platform that provides detailed insights into AI infrastructure spending across multiple cloud providers.</p>
+							<ul class="features-list">
+								<li>Multi-cloud cost tracking and optimization</li>
+								<li>Real-time cost alerts and budgeting</li>
+								<li>Resource utilization analytics</li>
+								<li>Automated cost optimization recommendations</li>
+								<li>Custom reporting and dashboards</li>
+							</ul>
+							<div class="pricing-info">
+								<div class="price">Starting at $500/month</div>
+								<a href="#" class="cta-button">Learn More</a>
+							</div>
+						</div>
+					</article>
+
+					<article class="tool-card">
+						<div class="tool-header">
+							<h3>Kubecost</h3>
+							<span class="category">Kubernetes Cost Management</span>
+						</div>
+						<div class="tool-content">
+							<p>Specialized cost monitoring tool for Kubernetes environments, perfect for AI workloads running on containerized infrastructure.</p>
+							<ul class="features-list">
+								<li>Kubernetes-native cost allocation</li>
+								<li>Namespace and pod-level cost tracking</li>
+								<li>GPU cost monitoring and optimization</li>
+								<li>Cost forecasting and budgeting</li>
+								<li>Integration with major cloud providers</li>
+							</ul>
+							<div class="pricing-info">
+								<div class="price">Free tier available</div>
+								<a href="#" class="cta-button">Learn More</a>
+							</div>
+						</div>
+					</article>
+
+					<article class="tool-card">
+						<div class="tool-header">
+							<h3>Datadog</h3>
+							<span class="category">Monitoring & Analytics</span>
+						</div>
+						<div class="tool-content">
+							<p>Full-stack monitoring platform that includes comprehensive cost tracking and optimization features for AI infrastructure.</p>
+							<ul class="features-list">
+								<li>Infrastructure and application monitoring</li>
+								<li>Cost correlation with performance metrics</li>
+								<li>Automated anomaly detection</li>
+								<li>Custom cost dashboards</li>
+								<li>Multi-cloud support</li>
+							</ul>
+							<div class="pricing-info">
+								<div class="price">Starting at $15/host/month</div>
+								<a href="#" class="cta-button">Learn More</a>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<section class="category-section">
+				<h2>Model Optimization Tools</h2>
+				<div class="tools-grid">
+					<article class="tool-card">
+						<div class="tool-header">
+							<h3>TensorRT</h3>
+							<span class="category">Model Optimization</span>
+						</div>
+						<div class="tool-content">
+							<p>NVIDIA's deep learning inference optimizer that reduces model size and improves inference speed while maintaining accuracy.</p>
+							<ul class="features-list">
+								<li>Model quantization and pruning</li>
+								<li>Tensor fusion and kernel fusion</li>
+								<li>Dynamic batch processing</li>
+								<li>Multi-precision inference</li>
+								<li>GPU memory optimization</li>
+							</ul>
+							<div class="pricing-info">
+								<div class="price">Free with NVIDIA GPUs</div>
+								<a href="#" class="cta-button">Learn More</a>
+							</div>
+						</div>
+					</article>
+
+					<article class="tool-card">
+						<div class="tool-header">
+							<h3>ONNX Runtime</h3>
+							<span class="category">Model Inference</span>
+						</div>
+						<div class="tool-content">
+							<p>Cross-platform inference engine that optimizes model performance across different hardware and reduces inference costs.</p>
+							<ul class="features-list">
+								<li>Model format standardization</li>
+								<li>Hardware-specific optimizations</li>
+								<li>Quantization support</li>
+								<li>Graph optimization</li>
+								<li>Multi-platform deployment</li>
+							</ul>
+							<div class="pricing-info">
+								<div class="price">Open Source</div>
+								<a href="#" class="cta-button">Learn More</a>
+							</div>
+						</div>
+					</article>
+
+					<article class="tool-card">
+						<div class="tool-header">
+							<h3>Neural Magic</h3>
+							<span class="category">Sparse AI</span>
+						</div>
+						<div class="tool-content">
+							<p>AI optimization platform that uses sparsity to reduce model size and computational requirements without sacrificing accuracy.</p>
+							<ul class="features-list">
+								<li>Automated model sparsification</li>
+								<li>CPU-optimized inference</li>
+								<li>Model compression up to 90%</li>
+								<li>Maintains model accuracy</li>
+								<li>Easy integration with existing models</li>
+							</ul>
+							<div class="pricing-info">
+								<div class="price">Contact for pricing</div>
+								<a href="#" class="cta-button">Learn More</a>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<section class="category-section">
+				<h2>Resource Management Platforms</h2>
+				<div class="tools-grid">
+					<article class="tool-card">
+						<div class="tool-header">
+							<h3>Ray</h3>
+							<span class="category">Distributed Computing</span>
+						</div>
+						<div class="tool-content">
+							<p>Open-source distributed computing framework that optimizes resource allocation for AI workloads and reduces infrastructure costs.</p>
+							<ul class="features-list">
+								<li>Distributed training and inference</li>
+								<li>Automatic resource scaling</li>
+								<li>Fault tolerance and recovery</li>
+								<li>Multi-cloud deployment</li>
+								<li>Rich ecosystem of AI libraries</li>
+							</ul>
+							<div class="pricing-info">
+								<div class="price">Open Source</div>
+								<a href="#" class="cta-button">Learn More</a>
+							</div>
+						</div>
+					</article>
+
+					<article class="tool-card">
+						<div class="tool-header">
+							<h3>Kubernetes</h3>
+							<span class="category">Container Orchestration</span>
+						</div>
+						<div class="tool-content">
+							<p>Container orchestration platform that provides efficient resource management and scaling for AI applications.</p>
+							<ul class="features-list">
+								<li>Automatic pod scaling</li>
+								<li>Resource quotas and limits</li>
+								<li>Multi-node cluster management</li>
+								<li>GPU resource allocation</li>
+								<li>Cost-effective resource utilization</li>
+							</ul>
+							<div class="pricing-info">
+								<div class="price">Open Source</div>
+								<a href="#" class="cta-button">Learn More</a>
+							</div>
+						</div>
+					</article>
+
+					<article class="tool-card">
+						<div class="tool-header">
+							<h3>Apache Airflow</h3>
+							<span class="category">Workflow Management</span>
+						</div>
+						<div class="tool-content">
+							<p>Workflow management platform that optimizes AI pipeline scheduling and resource allocation for cost efficiency.</p>
+							<ul class="features-list">
+								<li>DAG-based workflow orchestration</li>
+								<li>Dynamic task scheduling</li>
+								<li>Resource-aware execution</li>
+								<li>Cost optimization plugins</li>
+								<li>Scalable architecture</li>
+							</ul>
+							<div class="pricing-info">
+								<div class="price">Open Source</div>
+								<a href="#" class="cta-button">Learn More</a>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<section class="category-section">
+				<h2>Cloud-Specific Cost Optimization</h2>
+				<div class="tools-grid">
+					<article class="tool-card">
+						<div class="tool-header">
+							<h3>AWS Cost Explorer</h3>
+							<span class="category">AWS Cost Management</span>
+						</div>
+						<div class="tool-content">
+							<p>Native AWS tool for analyzing and optimizing costs across AWS services, including AI/ML services like SageMaker.</p>
+							<ul class="features-list">
+								<li>Detailed cost breakdown by service</li>
+								<li>Cost forecasting and budgeting</li>
+								<li>Resource tagging and allocation</li>
+								<li>Reserved instance recommendations</li>
+								<li>Cost anomaly detection</li>
+							</ul>
+							<div class="pricing-info">
+								<div class="price">Free with AWS account</div>
+								<a href="#" class="cta-button">Learn More</a>
+							</div>
+						</div>
+					</article>
+
+					<article class="tool-card">
+						<div class="tool-header">
+							<h3>Google Cloud Cost Management</h3>
+							<span class="category">GCP Cost Optimization</span>
+						</div>
+						<div class="tool-content">
+							<p>Google Cloud's comprehensive cost management suite for optimizing AI workloads on GCP infrastructure.</p>
+							<ul class="features-list">
+								<li>Real-time cost monitoring</li>
+								<li>Budget alerts and controls</li>
+								<li>Commitment discount optimization</li>
+								<li>Resource utilization insights</li>
+								<li>Multi-project cost analysis</li>
+							</ul>
+							<div class="pricing-info">
+								<div class="price">Free with GCP account</div>
+								<a href="#" class="cta-button">Learn More</a>
+							</div>
+						</div>
+					</article>
+
+					<article class="tool-card">
+						<div class="tool-header">
+							<h3>Azure Cost Management</h3>
+							<span class="category">Azure Cost Optimization</span>
+						</div>
+						<div class="tool-content">
+							<p>Microsoft Azure's cost management platform for monitoring and optimizing AI workloads on Azure infrastructure.</p>
+							<ul class="features-list">
+								<li>Cost analysis and reporting</li>
+								<li>Budget management and alerts</li>
+								<li>Reserved instance optimization</li>
+								<li>Cost allocation and tagging</li>
+								<li>Azure Advisor recommendations</li>
+							</ul>
+							<div class="pricing-info">
+								<div class="price">Free with Azure account</div>
+								<a href="#" class="cta-button">Learn More</a>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<div class="container">
+				<p>&copy; 2024 AI Cost Manager. All rights reserved. | <a href="/privacy" style="color: white;">Privacy Policy</a> | <a href="/terms" style="color: white;">Terms of Service</a></p>
+			</div>
+		</footer>
+	</body>
+</html> 
