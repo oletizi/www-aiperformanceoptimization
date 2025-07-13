@@ -1,7 +1,7 @@
 # AI Performance Optimization Content Enhancement Plan
 
 ## Original Prompt
-"what google searches would someone make to answer the question 'how do i automatically start optimizing my tokens, picking the right model (so many models!), caching results to spend less'"
+"what google searches would someone make to answer the question 'how do i automatically start optimizing my tokens, picking the right model (so many models!), caching results to spend less'? Document and implement a plan to generate SEO articles pages in the learning center (/learn)that match those searches."
 
 ## Identified Search Categories
 1. **Primary Search Intent (Problem Recognition)**
@@ -74,7 +74,7 @@
   - Code examples for different platforms
 
 ### Phase 2: Implementation Guides (Add to strategies.astro)
-- [x] **Task 2.1**: Add "Getting Started with Automatic Optimization" section to strategies.astro
+- [ ] **Task 2.1**: Add "Getting Started with Automatic Optimization" section to strategies.astro
   - Step-by-step setup guide
   - Quick wins for immediate cost reduction
   - Tools and platforms to use

@@ -1,0 +1,467 @@
+---
+// SEO metadata
+const title = "AI Resource Optimization Learning Center: Expert Guides & Tutorials";
+const description = "Master AI resource optimization with our comprehensive learning center. Expert guides, tutorials, and best practices for optimizing compute, memory, and costs.";
+const canonicalURL = "https://aiperformanceoptimization.com/learn";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Resource Optimization Learning Center",
+  "description": "Expert guides and tutorials for AI resource optimization",
+  "url": canonicalURL
+};
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content="AI resource optimization learning, AI optimization tutorials, machine learning optimization guides, AI performance tutorials, compute optimization guides, memory optimization tutorials, AI cost optimization learning" />
+		<meta name="author" content="AI Cost Optimization Experts" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/og-image.jpg" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content="/og-image.jpg" />
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href={canonicalURL} />
+		
+		<!-- Structured Data -->
+		<script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+		
+		<!-- Styles -->
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			
+			body {
+				font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+				line-height: 1.6;
+				color: #333;
+				background-color: #fafafa;
+			}
+			
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+			
+			header {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				padding: 1rem 0;
+				box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+			}
+			
+			nav {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			
+			nav ul {
+				display: flex;
+				list-style: none;
+				gap: 2rem;
+			}
+			
+			nav a {
+				color: white;
+				text-decoration: none;
+				font-weight: 500;
+				transition: opacity 0.3s;
+			}
+			
+			nav a:hover {
+				opacity: 0.8;
+			}
+			
+			.page-header {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				padding: 3rem 0;
+				text-align: center;
+			}
+			
+			.page-header h1 {
+				font-size: 2.5rem;
+				margin-bottom: 1rem;
+				font-weight: 700;
+			}
+			
+			.page-header p {
+				font-size: 1.2rem;
+				opacity: 0.9;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			
+			main {
+				padding: 4rem 0;
+			}
+			
+			.categories-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2rem;
+				margin: 3rem 0;
+			}
+			
+			.category-card {
+				background: white;
+				border-radius: 15px;
+				overflow: hidden;
+				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+				transition: transform 0.3s, box-shadow 0.3s;
+			}
+			
+			.category-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+			}
+			
+			.category-header {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				padding: 2rem;
+				text-align: center;
+			}
+			
+			.category-header h3 {
+				font-size: 1.5rem;
+				margin-bottom: 0.5rem;
+			}
+			
+			.category-header .icon {
+				font-size: 3rem;
+				margin-bottom: 1rem;
+			}
+			
+			.category-content {
+				padding: 2rem;
+			}
+			
+			.category-content p {
+				color: #666;
+				margin-bottom: 1.5rem;
+			}
+			
+			.articles-list {
+				list-style: none;
+				margin: 0;
+			}
+			
+			.articles-list li {
+				padding: 0.75rem 0;
+				border-bottom: 1px solid #eee;
+			}
+			
+			.articles-list li:last-child {
+				border-bottom: none;
+			}
+			
+			.articles-list a {
+				color: #667eea;
+				text-decoration: none;
+				font-weight: 500;
+				transition: color 0.3s;
+			}
+			
+			.articles-list a:hover {
+				color: #5a6fd8;
+			}
+			
+			.featured-section {
+				background: white;
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 3rem 0;
+				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+			}
+			
+			.featured-section h2 {
+				color: #667eea;
+				margin-bottom: 1.5rem;
+				font-size: 2rem;
+			}
+			
+			.featured-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 1.5rem;
+			}
+			
+			.featured-article {
+				background: #f8f9fa;
+				padding: 1.5rem;
+				border-radius: 10px;
+				border-left: 4px solid #667eea;
+			}
+			
+			.featured-article h4 {
+				color: #333;
+				margin-bottom: 0.5rem;
+				font-size: 1.1rem;
+			}
+			
+			.featured-article p {
+				color: #666;
+				font-size: 0.9rem;
+				margin-bottom: 1rem;
+			}
+			
+			.featured-article a {
+				color: #667eea;
+				text-decoration: none;
+				font-weight: 600;
+				font-size: 0.9rem;
+			}
+			
+			.search-section {
+				background: white;
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 3rem 0;
+				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+				text-align: center;
+			}
+			
+			.search-section h2 {
+				color: #667eea;
+				margin-bottom: 1rem;
+			}
+			
+			.search-box {
+				max-width: 500px;
+				margin: 0 auto;
+				position: relative;
+			}
+			
+			.search-input {
+				width: 100%;
+				padding: 1rem 1.5rem;
+				border: 2px solid #e2e8f0;
+				border-radius: 50px;
+				font-size: 1rem;
+				outline: none;
+				transition: border-color 0.3s;
+			}
+			
+			.search-input:focus {
+				border-color: #667eea;
+			}
+			
+			footer {
+				background: #333;
+				color: white;
+				padding: 2rem 0;
+				text-align: center;
+			}
+			
+			@media (max-width: 768px) {
+				nav ul {
+					flex-direction: column;
+					gap: 1rem;
+				}
+				
+				.page-header h1 {
+					font-size: 2rem;
+				}
+				
+				.categories-grid {
+					grid-template-columns: 1fr;
+				}
+				
+				.featured-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<nav class="container">
+				<div class="logo">
+					<h2>AI Resource Optimizer</h2>
+				</div>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/strategies">Strategies</a></li>
+					<li><a href="/tools">Tools</a></li>
+					<li><a href="/model-connectivity">Connectivity</a></li>
+					<li><a href="/learn">Learning Center</a></li>
+					<li><a href="/blog">Blog</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<section class="page-header">
+			<div class="container">
+				<h1>AI Resource Optimization Learning Center</h1>
+				<p>Master AI optimization with expert guides, tutorials, and best practices for compute, memory, and cost optimization</p>
+			</div>
+		</section>
+
+		<main class="container">
+			<section class="search-section">
+				<h2>Find What You're Looking For</h2>
+				<div class="search-box">
+					<input type="text" class="search-input" placeholder="Search for optimization topics, tutorials, or guides..." />
+				</div>
+			</section>
+
+			<section class="featured-section">
+				<h2>Featured Articles</h2>
+				<div class="featured-grid">
+					<article class="featured-article">
+						<h4>Getting Started with AI Resource Optimization</h4>
+						<p>Learn the fundamentals of optimizing AI models for better performance and lower costs.</p>
+						<a href="/learn/getting-started">Read More →</a>
+					</article>
+					
+					<article class="featured-article">
+						<h4>Understanding AI Model Costs</h4>
+						<p>Break down the different cost components of AI models and how to optimize each one.</p>
+						<a href="/learn/understanding-costs">Read More →</a>
+					</article>
+					
+					<article class="featured-article">
+						<h4>Compute Optimization Strategies</h4>
+						<p>Discover techniques to optimize compute resources for maximum efficiency.</p>
+						<a href="/learn/compute-optimization">Read More →</a>
+					</article>
+				</div>
+			</section>
+
+			<div class="categories-grid">
+				<article class="category-card">
+					<div class="category-header">
+						<div class="icon">💰</div>
+						<h3>Cost Optimization</h3>
+					</div>
+					<div class="category-content">
+						<p>Learn how to reduce AI costs while maintaining or improving performance.</p>
+						<ul class="articles-list">
+							<li><a href="/learn/automatic-token-optimization">Automatic Token Optimization</a></li>
+							<li><a href="/learn/intelligent-model-selection">Intelligent Model Selection</a></li>
+							<li><a href="/learn/ai-response-caching">AI Response Caching</a></li>
+							<li><a href="/learn/cost-monitoring-tools">Cost Monitoring Tools</a></li>
+							<li><a href="/learn/budget-optimization">Budget Optimization Strategies</a></li>
+						</ul>
+					</div>
+				</article>
+
+				<article class="category-card">
+					<div class="category-header">
+						<div class="icon">⚡</div>
+						<h3>Performance Optimization</h3>
+					</div>
+					<div class="category-content">
+						<p>Optimize AI model performance for speed, accuracy, and efficiency.</p>
+						<ul class="articles-list">
+							<li><a href="/learn/model-compression-techniques">Model Compression Techniques</a></li>
+							<li><a href="/learn/inference-optimization">Inference Optimization</a></li>
+							<li><a href="/learn/batch-processing">Batch Processing Strategies</a></li>
+							<li><a href="/learn/latency-optimization">Latency Optimization</a></li>
+							<li><a href="/learn/throughput-optimization">Throughput Optimization</a></li>
+						</ul>
+					</div>
+				</article>
+
+				<article class="category-card">
+					<div class="category-header">
+						<div class="icon">🔧</div>
+						<h3>Infrastructure & Tools</h3>
+					</div>
+					<div class="category-content">
+						<p>Master the tools and infrastructure needed for effective AI optimization.</p>
+						<ul class="articles-list">
+							<li><a href="/learn/cloud-optimization">Cloud Infrastructure Optimization</a></li>
+							<li><a href="/learn/monitoring-setup">Monitoring & Analytics Setup</a></li>
+							<li><a href="/learn/automation-tools">Automation Tools & Workflows</a></li>
+							<li><a href="/learn/scaling-strategies">Scaling Strategies</a></li>
+							<li><a href="/learn/security-optimization">Security & Compliance</a></li>
+						</ul>
+					</div>
+				</article>
+
+				<article class="category-card">
+					<div class="category-header">
+						<div class="icon">📊</div>
+						<h3>Advanced Techniques</h3>
+					</div>
+					<div class="category-content">
+						<p>Advanced optimization techniques for experienced practitioners.</p>
+						<ul class="articles-list">
+							<li><a href="/learn/quantization-techniques">Quantization Techniques</a></li>
+							<li><a href="/learn/knowledge-distillation">Knowledge Distillation</a></li>
+							<li><a href="/learn/pruning-strategies">Model Pruning Strategies</a></li>
+							<li><a href="/learn/neural-architecture-search">Neural Architecture Search</a></li>
+							<li><a href="/learn/federated-learning">Federated Learning Optimization</a></li>
+						</ul>
+					</div>
+				</article>
+
+				<article class="category-card">
+					<div class="category-header">
+						<div class="icon">🏢</div>
+						<h3>Enterprise Solutions</h3>
+					</div>
+					<div class="category-content">
+						<p>Enterprise-grade optimization strategies and best practices.</p>
+						<ul class="articles-list">
+							<li><a href="/learn/enterprise-cost-control">Enterprise Cost Control</a></li>
+							<li><a href="/learn/multi-team-optimization">Multi-Team Optimization</a></li>
+							<li><a href="/learn/governance-frameworks">Governance Frameworks</a></li>
+							<li><a href="/learn/roi-measurement">ROI Measurement & Reporting</a></li>
+							<li><a href="/learn/compliance-optimization">Compliance & Optimization</a></li>
+						</ul>
+					</div>
+				</article>
+
+				<article class="category-card">
+					<div class="category-header">
+						<div class="icon">📈</div>
+						<h3>Case Studies & Examples</h3>
+					</div>
+					<div class="category-content">
+						<p>Real-world examples and case studies of successful AI optimization.</p>
+						<ul class="articles-list">
+							<li><a href="/learn/ecommerce-optimization">E-commerce AI Optimization</a></li>
+							<li><a href="/learn/fintech-case-study">Fintech Cost Reduction</a></li>
+							<li><a href="/learn/healthcare-optimization">Healthcare AI Optimization</a></li>
+							<li><a href="/learn/manufacturing-ai">Manufacturing AI Optimization</a></li>
+							<li><a href="/learn/startup-optimization">Startup AI Optimization</a></li>
+						</ul>
+					</div>
+				</article>
+			</div>
+		</main>
+
+		<footer>
+			<div class="container">
+				<p>&copy; 2024 AI Resource Optimizer. All rights reserved. | <a href="/privacy" style="color: white;">Privacy Policy</a> | <a href="/terms" style="color: white;">Terms of Service</a></p>
+			</div>
+		</footer>
+	</body>
+</html> 
