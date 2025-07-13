@@ -16,6 +16,11 @@ const articlesByCategory = {
       ? article.data.category.includes('Performance Optimization')
       : article.data.category === 'Performance Optimization'
   ),
+  'Resiliency': learnArticles.filter(article => 
+    Array.isArray(article.data.category) 
+      ? article.data.category.includes('Resiliency')
+      : article.data.category === 'Resiliency'
+  ),
   'Infrastructure & Tools': learnArticles.filter(article => 
     Array.isArray(article.data.category) 
       ? article.data.category.includes('Infrastructure & Tools')
@@ -30,11 +35,6 @@ const articlesByCategory = {
     Array.isArray(article.data.category) 
       ? article.data.category.includes('Enterprise Solutions')
       : article.data.category === 'Enterprise Solutions'
-  ),
-  'Case Studies & Examples': learnArticles.filter(article => 
-    Array.isArray(article.data.category) 
-      ? article.data.category.includes('Case Studies & Examples')
-      : article.data.category === 'Case Studies & Examples'
   ),
 };
 
@@ -164,7 +164,7 @@ const jsonLd = {
 			
 			.categories-grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				grid-template-columns: repeat(2, 1fr);
 				gap: 2rem;
 				margin: 3rem 0;
 			}
@@ -419,6 +419,21 @@ const jsonLd = {
 
 				<article class="category-card">
 					<div class="category-header">
+						<div class="icon">🛡️</div>
+						<h3>Resiliency</h3>
+					</div>
+					<div class="category-content">
+						<p>Strategies and best practices for building resilient, fault-tolerant AI systems.</p>
+						<ul class="articles-list">
+							{articlesByCategory['Resiliency'].map(article => (
+								<li><a href={`/learn/${article.id.replace('.mdx', '')}`}>{article.data.title}</a></li>
+							))}
+						</ul>
+					</div>
+				</article>
+
+				<article class="category-card">
+					<div class="category-header">
 						<div class="icon">🔧</div>
 						<h3>Infrastructure & Tools</h3>
 					</div>
@@ -456,21 +471,6 @@ const jsonLd = {
 						<p>Enterprise-grade optimization strategies and best practices.</p>
 						<ul class="articles-list">
 							{articlesByCategory['Enterprise Solutions'].map(article => (
-								<li><a href={`/learn/${article.id.replace('.mdx', '')}`}>{article.data.title}</a></li>
-							))}
-						</ul>
-					</div>
-				</article>
-
-				<article class="category-card">
-					<div class="category-header">
-						<div class="icon">📈</div>
-						<h3>Case Studies & Examples</h3>
-					</div>
-					<div class="category-content">
-						<p>Real-world examples and case studies of successful AI optimization.</p>
-						<ul class="articles-list">
-							{articlesByCategory['Case Studies & Examples'].map(article => (
 								<li><a href={`/learn/${article.id.replace('.mdx', '')}`}>{article.data.title}</a></li>
 							))}
 						</ul>
