@@ -1,0 +1,13 @@
+/learn /learn/index.html 200
+/learn/ /learn/index.html 200
+# Remove .mdx extensions from learn URLs
+/learn/*.mdx /learn/:splat 301
+
+# Remove index.html from learn URLs
+/learn/*/index.html /learn/:splat 301
+
+# Handle trailing slashes
+/learn/*/ /learn/:splat 301
+
+# Catch-all for learn articles
+/learn/* /learn/:splat/index.html 200 

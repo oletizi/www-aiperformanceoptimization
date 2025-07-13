@@ -5,18 +5,18 @@ import type { GetStaticPaths } from 'astro';
 export const getStaticPaths: GetStaticPaths = async () => {
   const learnEntries = await getCollection('learn');
   return learnEntries.map(entry => ({
-    params: { slug: entry.id },
+    params: { slug: entry.id.replace('.mdx', '') },
     props: { entry },
   }));
 };
 
-const { entry } = Astro.props;
+const { entry } = Astro.props as { entry: any };
 const { Content } = await entry.render();
 
 // SEO metadata
 const title = entry.data.title;
 const description = entry.data.description;
-const canonicalURL = `https://aiperformanceoptimization.com/learn/${entry.id}`;
+const canonicalURL = `https://aiperformanceoptimization.com/learn/${entry.id.replace('.mdx', '')}`;
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
