@@ -2,6 +2,9 @@
 // Import components
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import placeholderImg from '../assets/images/placeholder.png';
+import heroBgImg from '../assets/images/hero-bg.jpg';
 
 // SEO metadata
 const title = "AI Performance Optimization: Master AI Resource Management";
@@ -14,6 +17,46 @@ const jsonLd = {
   "description": "Expert guides and tools for AI performance optimization",
   "url": canonicalURL
 };
+
+// Feature data - always use placeholder image
+const features = [
+  {
+    title: "Cost Optimization",
+    description: "Learn strategies to reduce AI costs by 30-70% while maintaining or improving performance.",
+    image: placeholderImg,
+    imageAlt: "Cost Optimization"
+  },
+  {
+    title: "Performance Tuning",
+    description: "Optimize AI model performance for speed, accuracy, and efficiency across different providers.",
+    image: placeholderImg,
+    imageAlt: "Performance Tuning"
+  },
+  {
+    title: "Reliability & Resilience",
+    description: "Build robust AI systems with failover strategies, error handling, and monitoring.",
+    image: placeholderImg,
+    imageAlt: "Reliability & Resilience"
+  },
+  {
+    title: "Infrastructure Management",
+    description: "Master tools and techniques for managing AI infrastructure at scale.",
+    image: placeholderImg,
+    imageAlt: "Infrastructure Management"
+  },
+  {
+    title: "Monitoring & Analytics",
+    description: "Implement comprehensive monitoring and analytics for AI model performance.",
+    image: placeholderImg,
+    imageAlt: "Monitoring & Analytics"
+  },
+  {
+    title: "Best Practices",
+    description: "Learn industry best practices for production-ready AI deployments.",
+    image: placeholderImg,
+    imageAlt: "Best Practices"
+  }
+];
 ---
 
 <html lang="en">
@@ -71,7 +114,7 @@ const jsonLd = {
 			}
 			
 			.hero {
-				background: linear-gradient(rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)), url('/hero-bg.jpg');
+				background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
 				background-size: cover;
 				background-position: center;
 				background-attachment: fixed;
@@ -80,6 +123,16 @@ const jsonLd = {
 				text-align: center;
 				position: relative;
 				overflow: hidden;
+			}
+			
+			.hero-bg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				z-index: 0;
 			}
 			
 			.hero::before {
@@ -151,36 +204,6 @@ const jsonLd = {
 				gap: 2rem;
 			}
 			
-			.feature-card {
-				background: white;
-				padding: 2rem;
-				border-radius: 15px;
-				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-				text-align: center;
-				transition: transform 0.3s, box-shadow 0.3s;
-			}
-			
-			.feature-card:hover {
-				transform: translateY(-5px);
-				box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-			}
-			
-			.feature-icon {
-				font-size: 3rem;
-				margin-bottom: 1rem;
-			}
-			
-			.feature-card h3 {
-				color: #667eea;
-				margin-bottom: 1rem;
-				font-size: 1.5rem;
-			}
-			
-			.feature-card p {
-				color: #666;
-				line-height: 1.6;
-			}
-			
 			@media (max-width: 768px) {
 				.hero h1 {
 					font-size: 2.5rem;
@@ -200,6 +223,7 @@ const jsonLd = {
 		<Navigation currentPage="home" />
 
 		<section class="hero">
+			<img src={heroBgImg.src} alt="" class="hero-bg" />
 			<div class="container">
 				<h1>AI Performance Optimization</h1>
 				<p>Master AI resource management with expert guides on cost optimization, performance tuning, and infrastructure best practices.</p>
@@ -211,36 +235,14 @@ const jsonLd = {
 			<div class="container">
 				<h2>What You'll Learn</h2>
 				<div class="features-grid">
-					<div class="feature-card">
-						<div class="feature-icon">💰</div>
-						<h3>Cost Optimization</h3>
-						<p>Learn strategies to reduce AI costs by 30-70% while maintaining or improving performance.</p>
-					</div>
-					<div class="feature-card">
-						<div class="feature-icon">⚡</div>
-						<h3>Performance Tuning</h3>
-						<p>Optimize AI model performance for speed, accuracy, and efficiency across different providers.</p>
-					</div>
-					<div class="feature-card">
-						<div class="feature-icon">🛡️</div>
-						<h3>Reliability & Resilience</h3>
-						<p>Build robust AI systems with failover strategies, error handling, and monitoring.</p>
-					</div>
-					<div class="feature-card">
-						<div class="feature-icon">🔧</div>
-						<h3>Infrastructure Management</h3>
-						<p>Master tools and techniques for managing AI infrastructure at scale.</p>
-					</div>
-					<div class="feature-card">
-						<div class="feature-icon">📊</div>
-						<h3>Monitoring & Analytics</h3>
-						<p>Implement comprehensive monitoring and analytics for AI model performance.</p>
-					</div>
-					<div class="feature-card">
-						<div class="feature-icon">🚀</div>
-						<h3>Best Practices</h3>
-						<p>Learn industry best practices for production-ready AI deployments.</p>
-					</div>
+					{features.map(feature => (
+						<FeatureCard 
+							title={feature.title}
+							description={feature.description}
+							image={feature.image}
+							imageAlt={feature.imageAlt}
+						/>
+					))}
 				</div>
 			</div>
 		</section>
