@@ -7,7 +7,7 @@ const learn = defineCollection({
     description: z.string(),
     publishedDate: z.string(),
     readingTime: z.string(),
-    category: z.string(),
+    category: z.union([z.string(), z.array(z.string())]),
   }),
 });
 
@@ -18,7 +18,7 @@ const blog = defineCollection({
     description: z.string(),
     publishedDate: z.string(),
     readingTime: z.string(),
-    category: z.string(),
+    category: z.union([z.string(), z.array(z.string())]),
   }),
 });
 
