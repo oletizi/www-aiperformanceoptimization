@@ -341,19 +341,6 @@ const jsonLd = {
 		</section>
 
 		<main class="container">
-			<section class="all-articles-section" style="background: white; border-radius: 15px; padding: 2rem; margin: 2rem 0; box-shadow: 0 4px 6px rgba(0,0,0,0.07);">
-				<h2 style="color: #667eea; margin-bottom: 1.5rem; font-size: 2rem;">All Learning Center Articles</h2>
-				<ul style="list-style: none; padding: 0;">
-					{learnArticles.map(article => (
-						<li style="margin-bottom: 0.75rem;">
-							<a href={`/learn/${article.id.replace('.mdx', '')}`} style="color: #667eea; text-decoration: none; font-weight: 500;">
-								{article.data.title}
-							</a>
-							<span style="color: #888; font-size: 0.95em; margin-left: 0.5em;">({article.data.category})</span>
-						</li>
-					))}
-				</ul>
-			</section>
 
 			<section class="search-section">
 				<h2>Find What You're Looking For</h2>
@@ -399,11 +386,9 @@ const jsonLd = {
 					<div class="category-content">
 						<p>Optimize AI model performance for speed, accuracy, and efficiency.</p>
 						<ul class="articles-list">
-							<li><a href="/learn/model-compression-techniques">Model Compression Techniques</a></li>
-							<li><a href="/learn/inference-optimization">Inference Optimization</a></li>
-							<li><a href="/learn/batch-processing">Batch Processing Strategies</a></li>
-							<li><a href="/learn/latency-optimization">Latency Optimization</a></li>
-							<li><a href="/learn/throughput-optimization">Throughput Optimization</a></li>
+							{articlesByCategory['Performance Optimization'].map(article => (
+								<li><a href={`/learn/${article.id.replace('.mdx', '')}`}>{article.data.title}</a></li>
+							))}
 						</ul>
 					</div>
 				</article>
@@ -416,11 +401,9 @@ const jsonLd = {
 					<div class="category-content">
 						<p>Master the tools and infrastructure needed for effective AI optimization.</p>
 						<ul class="articles-list">
-							<li><a href="/learn/cloud-optimization">Cloud Infrastructure Optimization</a></li>
-							<li><a href="/learn/monitoring-setup">Monitoring & Analytics Setup</a></li>
-							<li><a href="/learn/automation-tools">Automation Tools & Workflows</a></li>
-							<li><a href="/learn/scaling-strategies">Scaling Strategies</a></li>
-							<li><a href="/learn/security-optimization">Security & Compliance</a></li>
+							{articlesByCategory['Infrastructure & Tools'].map(article => (
+								<li><a href={`/learn/${article.id.replace('.mdx', '')}`}>{article.data.title}</a></li>
+							))}
 						</ul>
 					</div>
 				</article>
@@ -433,11 +416,9 @@ const jsonLd = {
 					<div class="category-content">
 						<p>Advanced optimization techniques for experienced practitioners.</p>
 						<ul class="articles-list">
-							<li><a href="/learn/quantization-techniques">Quantization Techniques</a></li>
-							<li><a href="/learn/knowledge-distillation">Knowledge Distillation</a></li>
-							<li><a href="/learn/pruning-strategies">Model Pruning Strategies</a></li>
-							<li><a href="/learn/neural-architecture-search">Neural Architecture Search</a></li>
-							<li><a href="/learn/federated-learning">Federated Learning Optimization</a></li>
+							{articlesByCategory['Advanced Techniques'].map(article => (
+								<li><a href={`/learn/${article.id.replace('.mdx', '')}`}>{article.data.title}</a></li>
+							))}
 						</ul>
 					</div>
 				</article>
@@ -450,11 +431,9 @@ const jsonLd = {
 					<div class="category-content">
 						<p>Enterprise-grade optimization strategies and best practices.</p>
 						<ul class="articles-list">
-							<li><a href="/learn/enterprise-cost-control">Enterprise Cost Control</a></li>
-							<li><a href="/learn/multi-team-optimization">Multi-Team Optimization</a></li>
-							<li><a href="/learn/governance-frameworks">Governance Frameworks</a></li>
-							<li><a href="/learn/roi-measurement">ROI Measurement & Reporting</a></li>
-							<li><a href="/learn/compliance-optimization">Compliance & Optimization</a></li>
+							{articlesByCategory['Enterprise Solutions'].map(article => (
+								<li><a href={`/learn/${article.id.replace('.mdx', '')}`}>{article.data.title}</a></li>
+							))}
 						</ul>
 					</div>
 				</article>
@@ -467,11 +446,9 @@ const jsonLd = {
 					<div class="category-content">
 						<p>Real-world examples and case studies of successful AI optimization.</p>
 						<ul class="articles-list">
-							<li><a href="/learn/ecommerce-optimization">E-commerce AI Optimization</a></li>
-							<li><a href="/learn/fintech-case-study">Fintech Cost Reduction</a></li>
-							<li><a href="/learn/healthcare-optimization">Healthcare AI Optimization</a></li>
-							<li><a href="/learn/manufacturing-ai">Manufacturing AI Optimization</a></li>
-							<li><a href="/learn/startup-optimization">Startup AI Optimization</a></li>
+							{articlesByCategory['Case Studies & Examples'].map(article => (
+								<li><a href={`/learn/${article.id.replace('.mdx', '')}`}>{article.data.title}</a></li>
+							))}
 						</ul>
 					</div>
 				</article>
