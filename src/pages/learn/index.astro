@@ -1,4 +1,22 @@
 ---
+import { getCollection } from 'astro:content';
+
+// Get all learn articles
+const learnArticles = await getCollection('learn');
+
+// Group articles by category
+const articlesByCategory = {
+  'Cost Optimization': learnArticles.filter(article => article.data.category === 'Cost Optimization'),
+  'Performance Optimization': learnArticles.filter(article => article.data.category === 'Performance Optimization'),
+  'Infrastructure & Tools': learnArticles.filter(article => article.data.category === 'Infrastructure & Tools'),
+  'Advanced Techniques': learnArticles.filter(article => article.data.category === 'Advanced Techniques'),
+  'Enterprise Solutions': learnArticles.filter(article => article.data.category === 'Enterprise Solutions'),
+  'Case Studies & Examples': learnArticles.filter(article => article.data.category === 'Case Studies & Examples'),
+};
+
+// Get featured articles (first 3)
+const featuredArticles = learnArticles.slice(0, 3);
+
 // SEO metadata
 const title = "AI Resource Optimization Learning Center: Expert Guides & Tutorials";
 const description = "Master AI resource optimization with our comprehensive learning center. Expert guides, tutorials, and best practices for optimizing compute, memory, and costs.";
@@ -333,23 +351,13 @@ const jsonLd = {
 			<section class="featured-section">
 				<h2>Featured Articles</h2>
 				<div class="featured-grid">
-					<article class="featured-article">
-						<h4>Getting Started with AI Resource Optimization</h4>
-						<p>Learn the fundamentals of optimizing AI models for better performance and lower costs.</p>
-						<a href="/learn/getting-started">Read More →</a>
-					</article>
-					
-					<article class="featured-article">
-						<h4>Understanding AI Model Costs</h4>
-						<p>Break down the different cost components of AI models and how to optimize each one.</p>
-						<a href="/learn/understanding-costs">Read More →</a>
-					</article>
-					
-					<article class="featured-article">
-						<h4>Compute Optimization Strategies</h4>
-						<p>Discover techniques to optimize compute resources for maximum efficiency.</p>
-						<a href="/learn/compute-optimization">Read More →</a>
-					</article>
+					{featuredArticles.map(article => (
+						<article class="featured-article">
+							<h4>{article.data.title}</h4>
+							<p>{article.data.description}</p>
+							<a href={`/learn/${article.id}`}>Read More →</a>
+						</article>
+					))}
 				</div>
 			</section>
 
@@ -362,11 +370,9 @@ const jsonLd = {
 					<div class="category-content">
 						<p>Learn how to reduce AI costs while maintaining or improving performance.</p>
 						<ul class="articles-list">
-							<li><a href="/learn/automatic-token-optimization">Automatic Token Optimization</a></li>
-							<li><a href="/learn/intelligent-model-selection">Intelligent Model Selection</a></li>
-							<li><a href="/learn/ai-response-caching">AI Response Caching</a></li>
-							<li><a href="/learn/cost-monitoring-tools">Cost Monitoring Tools</a></li>
-							<li><a href="/learn/budget-optimization">Budget Optimization Strategies</a></li>
+							{articlesByCategory['Cost Optimization'].map(article => (
+								<li><a href={`/learn/${article.id}`}>{article.data.title}</a></li>
+							))}
 						</ul>
 					</div>
 				</article>

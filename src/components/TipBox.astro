@@ -1,0 +1,35 @@
+---
+export interface Props {
+  title?: string;
+}
+
+const { title = "💡 Pro Tip" } = Astro.props;
+---
+
+<div class="tip-box">
+  <h4>{title}</h4>
+  <slot />
+</div>
+
+<style>
+  .tip-box {
+    background: #f0fff4;
+    border: 1px solid #68d391;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+  }
+  
+  .tip-box h4 {
+    color: #38a169;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  .tip-box p {
+    color: #2f855a;
+    margin: 0;
+    line-height: 1.6;
+  }
+</style> 

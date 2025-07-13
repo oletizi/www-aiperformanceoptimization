@@ -5,6 +5,13 @@ import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx()],
+  integrations: [
+    mdx({
+      components: {
+        'tip': 'src/components/TipBox.astro',
+        'warning': 'src/components/WarningBox.astro',
+      }
+    })
+  ],
   adapter: netlify()
 });

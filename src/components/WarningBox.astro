@@ -1,0 +1,35 @@
+---
+export interface Props {
+  title?: string;
+}
+
+const { title = "⚠️ Important Considerations" } = Astro.props;
+---
+
+<div class="warning-box">
+  <h4>{title}</h4>
+  <slot />
+</div>
+
+<style>
+  .warning-box {
+    background: #fff5f5;
+    border: 1px solid #feb2b2;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+  }
+  
+  .warning-box h4 {
+    color: #e53e3e;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  .warning-box p {
+    color: #c53030;
+    margin: 0;
+    line-height: 1.6;
+  }
+</style> 
