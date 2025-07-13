@@ -1,8 +1,19 @@
 ---
+// Import components
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
 // SEO metadata
-const title = "AI Cost Optimization Blog: Expert Insights and Best Practices";
-const description = "Stay updated with the latest AI cost optimization insights, strategies, and best practices. Expert articles on optimizing AI expenses and maximizing ROI.";
+const title = "AI Performance Optimization Blog: Latest Insights & Strategies";
+const description = "Stay updated with the latest insights, strategies, and best practices for AI performance optimization. Expert analysis and practical tips for optimizing your AI systems.";
 const canonicalURL = "https://aiperformanceoptimization.com/blog";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Performance Optimization Blog",
+  "description": "Latest insights and strategies for AI performance optimization",
+  "url": canonicalURL
+};
 ---
 
 <html lang="en">
@@ -15,8 +26,8 @@ const canonicalURL = "https://aiperformanceoptimization.com/blog";
 		<!-- SEO Meta Tags -->
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<meta name="keywords" content="AI cost optimization blog, AI optimization articles, machine learning cost tips, AI ROI strategies" />
-		<meta name="author" content="AI Cost Optimization Experts" />
+		<meta name="keywords" content="AI optimization blog, AI performance insights, machine learning optimization, AI cost management, AI best practices" />
+		<meta name="author" content="AI Performance Optimization Experts" />
 		
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
@@ -36,15 +47,7 @@ const canonicalURL = "https://aiperformanceoptimization.com/blog";
 		<link rel="canonical" href={canonicalURL} />
 		
 		<!-- Structured Data -->
-		<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "Blog",
-			"name": "AI Cost Optimization Blog",
-			"description": "Expert insights and best practices for AI cost optimization",
-			"url": "https://aiperformanceoptimization.com/blog"
-		}
-		</script>
+		<script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
 		
 		<!-- Styles -->
 		<style>
@@ -65,36 +68,6 @@ const canonicalURL = "https://aiperformanceoptimization.com/blog";
 				max-width: 1200px;
 				margin: 0 auto;
 				padding: 0 20px;
-			}
-			
-			header {
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-				color: white;
-				padding: 1rem 0;
-				box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-			}
-			
-			nav {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-			}
-			
-			nav ul {
-				display: flex;
-				list-style: none;
-				gap: 2rem;
-			}
-			
-			nav a {
-				color: white;
-				text-decoration: none;
-				font-weight: 500;
-				transition: opacity 0.3s;
-			}
-			
-			nav a:hover {
-				opacity: 0.8;
 			}
 			
 			.page-header {
@@ -134,126 +107,39 @@ const canonicalURL = "https://aiperformanceoptimization.com/blog";
 				box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 			}
 			
-			.blog-image {
-				height: 200px;
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				color: white;
-				font-size: 3rem;
-			}
-			
 			.blog-content {
-				padding: 1.5rem;
-			}
-			
-			.blog-meta {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin-bottom: 1rem;
-				font-size: 0.9rem;
-				color: #666;
-			}
-			
-			.blog-category {
-				background: #667eea;
-				color: white;
-				padding: 0.25rem 0.75rem;
-				border-radius: 20px;
-				font-size: 0.8rem;
-			}
-			
-			.blog-title {
-				font-size: 1.3rem;
-				font-weight: 600;
-				margin-bottom: 1rem;
-				color: #333;
-				line-height: 1.4;
-			}
-			
-			.blog-excerpt {
-				color: #666;
-				margin-bottom: 1.5rem;
-				line-height: 1.6;
-			}
-			
-			.read-more {
-				color: #667eea;
-				text-decoration: none;
-				font-weight: 600;
-				transition: color 0.3s;
-			}
-			
-			.read-more:hover {
-				color: #5a6fd8;
-			}
-			
-			.featured-post {
-				background: white;
-				border-radius: 15px;
-				overflow: hidden;
-				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-				margin-bottom: 3rem;
-			}
-			
-			.featured-image {
-				height: 300px;
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				color: white;
-				font-size: 4rem;
-			}
-			
-			.featured-content {
 				padding: 2rem;
 			}
 			
-			.featured-title {
-				font-size: 2rem;
-				font-weight: 700;
+			.blog-content h3 {
+				color: #667eea;
 				margin-bottom: 1rem;
-				color: #333;
+				font-size: 1.3rem;
 			}
 			
-			.featured-excerpt {
-				font-size: 1.1rem;
+			.blog-content p {
 				color: #666;
-				margin-bottom: 1.5rem;
-				line-height: 1.6;
+				margin-bottom: 1rem;
 			}
 			
-			.cta-button {
-				display: inline-block;
-				background: #667eea;
-				color: white;
-				padding: 0.75rem 1.5rem;
+			.blog-meta {
+				color: #999;
+				font-size: 0.9rem;
+				margin-bottom: 1rem;
+			}
+			
+			.blog-link {
+				color: #667eea;
 				text-decoration: none;
-				border-radius: 25px;
 				font-weight: 600;
-				transition: background 0.3s;
+				font-size: 0.9rem;
 			}
 			
-			.cta-button:hover {
-				background: #5a6fd8;
-			}
-			
-			footer {
-				background: #333;
-				color: white;
-				padding: 2rem 0;
-				text-align: center;
+			.blog-link:hover {
+				text-decoration: underline;
 			}
 			
 			@media (max-width: 768px) {
-				nav ul {
-					flex-direction: column;
-					gap: 1rem;
-				}
-				
 				.page-header h1 {
 					font-size: 2rem;
 				}
@@ -261,150 +147,41 @@ const canonicalURL = "https://aiperformanceoptimization.com/blog";
 				.blog-grid {
 					grid-template-columns: 1fr;
 				}
-				
-				.featured-title {
-					font-size: 1.5rem;
-				}
 			}
 		</style>
 	</head>
 	<body>
-		<header>
-			<nav class="container">
-				<div class="logo">
-					<h2>AI Cost Manager</h2>
-				</div>
-				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/strategies">Strategies</a></li>
-					<li><a href="/tools">Tools</a></li>
-					<li><a href="/model-connectivity">Connectivity</a></li>
-					<li><a href="/learn">Learning Center</a></li>
-					<li><a href="/blog">Blog</a></li>
-				</ul>
-			</nav>
-		</header>
+		<Navigation currentPage="blog" />
 
 		<section class="page-header">
 			<div class="container">
-				<h1>AI Cost Management Blog</h1>
-				<p>Expert insights and best practices for optimizing your AI expenses</p>
+				<h1>AI Performance Optimization Blog</h1>
+				<p>Latest insights, strategies, and best practices for optimizing AI performance</p>
 			</div>
 		</section>
 
 		<main class="container">
-			<article class="featured-post">
-				<div class="featured-image">
-					🔗
-				</div>
-				<div class="featured-content">
-					<div class="blog-meta">
-						<span class="blog-category">Featured</span>
-						<span>December 15, 2024</span>
-					</div>
-					<h2 class="featured-title">Managing Connectivity to Multiple AI Models: A Complete Guide</h2>
-					<p class="featured-excerpt">Discover how to manage connectivity across different AI providers, implement intelligent routing, and optimize costs with unified access solutions. Learn about API key management, fallback strategies, and cross-provider optimization.</p>
-					<a href="/model-connectivity" class="cta-button">Read Full Article</a>
-				</div>
-			</article>
-
 			<div class="blog-grid">
 				<article class="blog-card">
-					<div class="blog-image">
-						💰
-					</div>
 					<div class="blog-content">
-						<div class="blog-meta">
-							<span class="blog-category">Cost Analysis</span>
-							<span>December 10, 2024</span>
-						</div>
-						<h3 class="blog-title">How to Calculate the True Cost of Your AI Models</h3>
-						<p class="blog-excerpt">Learn the essential metrics and formulas for accurately calculating the total cost of ownership for your AI models, including hidden costs that most organizations overlook.</p>
-						<a href="#" class="read-more">Read More →</a>
+						<h3>Calculate AI Model Costs: A Comprehensive Guide</h3>
+						<p>Learn how to accurately calculate and predict AI model costs across different providers and use cases.</p>
+						<div class="blog-meta">Published: December 15, 2024 • 8 min read</div>
+						<a href="/blog/calculate-ai-model-costs" class="blog-link">Read More →</a>
 					</div>
 				</article>
-
+				
 				<article class="blog-card">
-					<div class="blog-image">
-						⚡
-					</div>
 					<div class="blog-content">
-						<div class="blog-meta">
-							<span class="blog-category">Performance</span>
-							<span>December 8, 2024</span>
-						</div>
-						<h3 class="blog-title">Model Compression Techniques That Actually Work</h3>
-						<p class="blog-excerpt">Explore proven model compression methods including quantization, pruning, and knowledge distillation that can reduce model size by up to 90% without sacrificing accuracy.</p>
-						<a href="#" class="read-more">Read More →</a>
-					</div>
-				</article>
-
-				<article class="blog-card">
-					<div class="blog-image">
-						☁️
-					</div>
-					<div class="blog-content">
-						<div class="blog-meta">
-							<span class="blog-category">Cloud Optimization</span>
-							<span>December 5, 2024</span>
-						</div>
-						<h3 class="blog-title">Multi-Cloud AI Cost Optimization Strategies</h3>
-						<p class="blog-excerpt">Discover how to leverage multiple cloud providers to optimize costs while maintaining high availability and performance for your AI workloads.</p>
-						<a href="#" class="read-more">Read More →</a>
-					</div>
-				</article>
-
-				<article class="blog-card">
-					<div class="blog-image">
-						📈
-					</div>
-					<div class="blog-content">
-						<div class="blog-meta">
-							<span class="blog-category">ROI</span>
-							<span>December 3, 2024</span>
-						</div>
-						<h3 class="blog-title">Measuring AI ROI: Beyond Cost Reduction</h3>
-						<p class="blog-excerpt">Learn how to measure the true return on investment for AI projects, including business impact, efficiency gains, and competitive advantages.</p>
-						<a href="#" class="read-more">Read More →</a>
-					</div>
-				</article>
-
-				<article class="blog-card">
-					<div class="blog-image">
-						🔧
-					</div>
-					<div class="blog-content">
-						<div class="blog-meta">
-							<span class="blog-category">Tools</span>
-							<span>November 30, 2024</span>
-						</div>
-						<h3 class="blog-title">Top 10 AI Cost Management Tools for 2024</h3>
-						<p class="blog-excerpt">Compare the best tools and platforms for monitoring, analyzing, and optimizing AI costs across different cloud providers and deployment scenarios.</p>
-						<a href="#" class="read-more">Read More →</a>
-					</div>
-				</article>
-
-				<article class="blog-card">
-					<div class="blog-image">
-						🚀
-					</div>
-					<div class="blog-content">
-						<div class="blog-meta">
-							<span class="blog-category">Startups</span>
-							<span>November 28, 2024</span>
-						</div>
-						<h3 class="blog-title">AI Cost Optimization for Startups: A Survival Guide</h3>
-						<p class="blog-excerpt">Essential strategies for early-stage companies to manage AI costs effectively while scaling their products and maintaining competitive advantages.</p>
-						<a href="#" class="read-more">Read More →</a>
+						<h3>Model Compression Techniques for AI Optimization</h3>
+						<p>Explore advanced model compression techniques to reduce AI model size and improve performance.</p>
+						<div class="blog-meta">Published: December 15, 2024 • 10 min read</div>
+						<a href="/blog/model-compression-techniques" class="blog-link">Read More →</a>
 					</div>
 				</article>
 			</div>
 		</main>
 
-		<footer>
-			<div class="container">
-				<p>&copy; 2024 AI Cost Manager. All rights reserved. | <a href="/privacy" style="color: white;">Privacy Policy</a> | <a href="/terms" style="color: white;">Terms of Service</a></p>
-			</div>
-		</footer>
+		<Footer />
 	</body>
 </html> 

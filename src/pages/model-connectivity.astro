@@ -1,4 +1,8 @@
 ---
+// Import components
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
 // Import MDX content
 import ModelConnectivityContent from '../content/model-connectivity.mdx';
 
@@ -13,11 +17,11 @@ const jsonLd = {
   "description": description,
   "author": {
     "@type": "Organization",
-    "name": "AI Cost Optimization Experts"
+    "name": "AI Performance Optimization"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "AI Cost Optimizer"
+    "name": "AI Performance Optimization"
   },
   "url": canonicalURL
 };
@@ -34,7 +38,7 @@ const jsonLd = {
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta name="keywords" content="AI model connectivity, unified model access, multi-provider AI, model routing, intelligent fallback, API key management, cross-provider AI" />
-		<meta name="author" content="AI Cost Optimization Experts" />
+		<meta name="author" content="AI Performance Optimization Experts" />
 		
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="article" />
@@ -75,36 +79,6 @@ const jsonLd = {
 				max-width: 1200px;
 				margin: 0 auto;
 				padding: 0 20px;
-			}
-			
-			header {
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-				color: white;
-				padding: 1rem 0;
-				box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-			}
-			
-			nav {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-			}
-			
-			nav ul {
-				display: flex;
-				list-style: none;
-				gap: 2rem;
-			}
-			
-			nav a {
-				color: white;
-				text-decoration: none;
-				font-weight: 500;
-				transition: opacity 0.3s;
-			}
-			
-			nav a:hover {
-				opacity: 0.8;
 			}
 			
 			.page-header {
@@ -183,19 +157,7 @@ const jsonLd = {
 				color: inherit;
 			}
 			
-			footer {
-				background: #333;
-				color: white;
-				padding: 2rem 0;
-				text-align: center;
-			}
-			
 			@media (max-width: 768px) {
-				nav ul {
-					flex-direction: column;
-					gap: 1rem;
-				}
-				
 				.page-header h1 {
 					font-size: 2rem;
 				}
@@ -203,21 +165,7 @@ const jsonLd = {
 		</style>
 	</head>
 	<body>
-		<header>
-			<nav class="container">
-				<div class="logo">
-					<h2>AI Cost Manager</h2>
-				</div>
-				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/strategies">Strategies</a></li>
-					<li><a href="/tools">Tools</a></li>
-					<li><a href="/model-connectivity">Connectivity</a></li>
-					<li><a href="/learn">Learning Center</a></li>
-					<li><a href="/blog">Blog</a></li>
-				</ul>
-			</nav>
-		</header>
+		<Navigation currentPage="connectivity" />
 
 		<section class="page-header">
 			<div class="container">
@@ -230,10 +178,6 @@ const jsonLd = {
 			<ModelConnectivityContent />
 		</main>
 
-		<footer>
-			<div class="container">
-				<p>&copy; 2024 AI Cost Manager. All rights reserved. | <a href="/privacy" style="color: white;">Privacy Policy</a> | <a href="/terms" style="color: white;">Terms of Service</a></p>
-			</div>
-		</footer>
+		<Footer />
 	</body>
 </html> 
