@@ -4,14 +4,38 @@ import { getCollection } from 'astro:content';
 // Get all learn articles
 const learnArticles = await getCollection('learn');
 
-// Group articles by category
+// Group articles by category (supporting multiple categories per article)
 const articlesByCategory = {
-  'Cost Optimization': learnArticles.filter(article => article.data.category === 'Cost Optimization'),
-  'Performance Optimization': learnArticles.filter(article => article.data.category === 'Performance Optimization'),
-  'Infrastructure & Tools': learnArticles.filter(article => article.data.category === 'Infrastructure & Tools'),
-  'Advanced Techniques': learnArticles.filter(article => article.data.category === 'Advanced Techniques'),
-  'Enterprise Solutions': learnArticles.filter(article => article.data.category === 'Enterprise Solutions'),
-  'Case Studies & Examples': learnArticles.filter(article => article.data.category === 'Case Studies & Examples'),
+  'Cost Optimization': learnArticles.filter(article => 
+    Array.isArray(article.data.category) 
+      ? article.data.category.includes('Cost Optimization')
+      : article.data.category === 'Cost Optimization'
+  ),
+  'Performance Optimization': learnArticles.filter(article => 
+    Array.isArray(article.data.category) 
+      ? article.data.category.includes('Performance Optimization')
+      : article.data.category === 'Performance Optimization'
+  ),
+  'Infrastructure & Tools': learnArticles.filter(article => 
+    Array.isArray(article.data.category) 
+      ? article.data.category.includes('Infrastructure & Tools')
+      : article.data.category === 'Infrastructure & Tools'
+  ),
+  'Advanced Techniques': learnArticles.filter(article => 
+    Array.isArray(article.data.category) 
+      ? article.data.category.includes('Advanced Techniques')
+      : article.data.category === 'Advanced Techniques'
+  ),
+  'Enterprise Solutions': learnArticles.filter(article => 
+    Array.isArray(article.data.category) 
+      ? article.data.category.includes('Enterprise Solutions')
+      : article.data.category === 'Enterprise Solutions'
+  ),
+  'Case Studies & Examples': learnArticles.filter(article => 
+    Array.isArray(article.data.category) 
+      ? article.data.category.includes('Case Studies & Examples')
+      : article.data.category === 'Case Studies & Examples'
+  ),
 };
 
 // Get featured articles (first 3)
