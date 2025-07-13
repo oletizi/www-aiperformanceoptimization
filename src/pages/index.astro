@@ -97,37 +97,42 @@ const features = [
 		
 		<!-- Styles -->
 		<style>
-			* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
+			:root {
+				--tetra-primary: #1B365D;
+				--tetra-secondary: #009BDF;
+				--tetra-accent: #00BFB3;
+				--tetra-light: #E6F1F8;
+				--tetra-dark: #0A192F;
+				--tetra-white: #FFFFFF;
+				--tetra-gray: #F5F7FA;
+				--tetra-orange: #FF6B35;
 			}
-			
+
 			body {
 				font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 				line-height: 1.6;
-				color: #333;
-				background-color: #fafafa;
+				color: var(--tetra-primary);
+				background-color: var(--tetra-gray);
 			}
-			
+
 			.container {
 				max-width: 1200px;
 				margin: 0 auto;
 				padding: 0 20px;
 			}
-			
+
 			.hero {
-				background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+				background: linear-gradient(135deg, var(--tetra-primary) 0%, var(--tetra-secondary) 100%);
 				background-size: cover;
 				background-position: center;
 				background-attachment: fixed;
-				color: white;
+				color: var(--tetra-white);
 				padding: 6rem 0;
 				text-align: center;
 				position: relative;
 				overflow: hidden;
 			}
-			
+
 			.hero-bg {
 				position: absolute;
 				top: 0;
@@ -137,7 +142,7 @@ const features = [
 				object-fit: cover;
 				z-index: 0;
 			}
-			
+
 			.hero::before {
 				content: '';
 				position: absolute;
@@ -145,22 +150,22 @@ const features = [
 				left: 0;
 				right: 0;
 				bottom: 0;
-				background: rgba(0, 0, 0, 0.3);
+				background: rgba(27, 54, 93, 0.3);
 				z-index: 1;
 			}
-			
+
 			.hero .container {
 				position: relative;
 				z-index: 2;
 			}
-			
+
 			.hero h1 {
 				font-size: 3.5rem;
 				margin-bottom: 1.5rem;
 				font-weight: 700;
-				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+				text-shadow: 2px 2px 4px rgba(10, 25, 47, 0.3);
 			}
-			
+
 			.hero p {
 				font-size: 1.3rem;
 				margin-bottom: 2.5rem;
@@ -168,54 +173,53 @@ const features = [
 				max-width: 700px;
 				margin-left: auto;
 				margin-right: auto;
-				text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+				text-shadow: 1px 1px 2px rgba(10, 25, 47, 0.3);
 			}
-			
+
 			.cta-button {
 				display: inline-block;
-				background: white;
-				color: #667eea;
+				background: var(--tetra-orange);
+				color: var(--tetra-white);
 				padding: 1.2rem 2.5rem;
 				text-decoration: none;
 				border-radius: 50px;
 				font-weight: 600;
 				font-size: 1.1rem;
 				transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+				box-shadow: 0 4px 15px rgba(0, 155, 223, 0.2);
 			}
-			
+
 			.cta-button:hover {
 				transform: translateY(-3px);
-				box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-				background: #f8f9fa;
+				box-shadow: 0 8px 25px rgba(0, 191, 179, 0.3);
+				background: var(--tetra-secondary);
+				color: var(--tetra-white);
 			}
-			
+
 			.features {
 				padding: 4rem 0;
 			}
-			
+
 			.features h2 {
 				text-align: center;
 				font-size: 2.5rem;
 				margin-bottom: 3rem;
-				color: #333;
+				color: var(--tetra-primary);
 			}
-			
+
 			.features-grid {
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 				gap: 2rem;
 			}
-			
+
 			@media (max-width: 768px) {
 				.hero h1 {
 					font-size: 2.5rem;
 				}
-				
 				.hero p {
 					font-size: 1.1rem;
 				}
-				
 				.features-grid {
 					grid-template-columns: 1fr;
 				}
