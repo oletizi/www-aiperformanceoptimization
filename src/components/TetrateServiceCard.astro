@@ -1,0 +1,142 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  features?: string[];
+  ctaText?: string;
+  ctaUrl?: string;
+}
+
+const {
+  title = "Managed Solution",
+  description = "Tetrate Agent Router Service provides intelligent routing for GenAI developers with unified model access, automatic fallback, cost management, and cross-provider monitoring.",
+  features = [
+    "Unified model access across providers",
+    "Automatic fallback and failover",
+    "Cost optimization and monitoring",
+    "Enterprise-grade reliability"
+  ],
+  ctaText = "Learn More",
+  ctaUrl = "https://tetr8.io/get-agent-router-service"
+} = Astro.props;
+---
+
+<div class="tetrate-card">
+  <div class="tetrate-header">
+    <div class="tetrate-icon">🚀</div>
+    <h4>{title}</h4>
+  </div>
+  <div class="tetrate-content">
+    <p><strong>Tetrate Agent Router Service</strong> {description}</p>
+    <ul class="tetrate-features">
+      {features.map(feature => (
+        <li>{feature}</li>
+      ))}
+    </ul>
+    <a href={ctaUrl} class="tetrate-cta" target="_blank" rel="noopener noreferrer">
+      {ctaText} →
+    </a>
+  </div>
+</div>
+
+<style>
+  .tetrate-card {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tetrate-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .tetrate-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .tetrate-icon {
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tetrate-header h4 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .tetrate-content p {
+    color: #475569;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .tetrate-features {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .tetrate-features li {
+    color: #64748b;
+    padding: 0.25rem 0;
+    position: relative;
+    padding-left: 1.25rem;
+  }
+
+  .tetrate-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: bold;
+  }
+
+  .tetrate-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .tetrate-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .tetrate-card {
+      padding: 1rem;
+    }
+    
+    .tetrate-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.5rem;
+    }
+  }
+</style> 
