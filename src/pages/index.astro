@@ -71,41 +71,67 @@ const jsonLd = {
 			}
 			
 			.hero {
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				background: linear-gradient(rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)), url('/hero-bg.jpg');
+				background-size: cover;
+				background-position: center;
+				background-attachment: fixed;
 				color: white;
-				padding: 4rem 0;
+				padding: 6rem 0;
 				text-align: center;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.hero::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: rgba(0, 0, 0, 0.3);
+				z-index: 1;
+			}
+			
+			.hero .container {
+				position: relative;
+				z-index: 2;
 			}
 			
 			.hero h1 {
-				font-size: 3rem;
-				margin-bottom: 1rem;
+				font-size: 3.5rem;
+				margin-bottom: 1.5rem;
 				font-weight: 700;
+				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 			}
 			
 			.hero p {
-				font-size: 1.2rem;
-				margin-bottom: 2rem;
-				opacity: 0.9;
-				max-width: 600px;
+				font-size: 1.3rem;
+				margin-bottom: 2.5rem;
+				opacity: 0.95;
+				max-width: 700px;
 				margin-left: auto;
 				margin-right: auto;
+				text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 			}
 			
 			.cta-button {
 				display: inline-block;
 				background: white;
 				color: #667eea;
-				padding: 1rem 2rem;
+				padding: 1.2rem 2.5rem;
 				text-decoration: none;
 				border-radius: 50px;
 				font-weight: 600;
-				transition: transform 0.3s, box-shadow 0.3s;
+				font-size: 1.1rem;
+				transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 			}
 			
 			.cta-button:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+				transform: translateY(-3px);
+				box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+				background: #f8f9fa;
 			}
 			
 			.features {
@@ -157,7 +183,11 @@ const jsonLd = {
 			
 			@media (max-width: 768px) {
 				.hero h1 {
-					font-size: 2rem;
+					font-size: 2.5rem;
+				}
+				
+				.hero p {
+					font-size: 1.1rem;
 				}
 				
 				.features-grid {
