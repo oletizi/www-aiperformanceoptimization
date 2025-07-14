@@ -1,431 +1,115 @@
 ---
+// Import components
+import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import Navigation from '../../components/Navigation.astro';
-import Footer from '../../components/Footer.astro';
 
-// Get all learn articles
-const learnArticles = await getCollection('learn');
+// Get all learning articles
+const allLearningPosts = await getCollection('learn');
 
-// Group articles by category (supporting multiple categories per article)
-const articlesByCategory = {
-  'Cost Optimization': learnArticles.filter(article => 
-    Array.isArray(article.data.category) 
-      ? article.data.category.includes('Cost Optimization')
-      : article.data.category === 'Cost Optimization'
-  ),
-  'Performance Optimization': learnArticles.filter(article => 
-    Array.isArray(article.data.category) 
-      ? article.data.category.includes('Performance Optimization')
-      : article.data.category === 'Performance Optimization'
-  ),
-  'Resiliency': learnArticles.filter(article => 
-    Array.isArray(article.data.category) 
-      ? article.data.category.includes('Resiliency')
-      : article.data.category === 'Resiliency'
-  ),
-  'Infrastructure & Tools': learnArticles.filter(article => 
-    Array.isArray(article.data.category) 
-      ? article.data.category.includes('Infrastructure & Tools')
-      : article.data.category === 'Infrastructure & Tools'
-  ),
-  'Advanced Techniques': learnArticles.filter(article => 
-    Array.isArray(article.data.category) 
-      ? article.data.category.includes('Advanced Techniques')
-      : article.data.category === 'Advanced Techniques'
-  ),
-  'Enterprise Solutions': learnArticles.filter(article => 
-    Array.isArray(article.data.category) 
-      ? article.data.category.includes('Enterprise Solutions')
-      : article.data.category === 'Enterprise Solutions'
-  ),
-};
-
-// Get featured articles (first 3)
-const featuredArticles = learnArticles.slice(0, 3);
+// Sort by title for consistent ordering
+const sortedPosts = allLearningPosts.sort((a, b) => a.data.title.localeCompare(b.data.title));
 
 // SEO metadata
-const title = "AI Resource Optimization Learning Center: Expert Guides & Tutorials";
-const description = "Master AI resource optimization with our comprehensive learning center. Expert guides, tutorials, and best practices for optimizing compute, memory, and costs.";
+const title = "AI Performance Optimization Learning Center: Expert Guides & Tutorials";
+const description = "Comprehensive learning resources for AI performance optimization. From beginner guides to advanced techniques - master AI cost reduction, scaling, and optimization strategies.";
 const canonicalURL = "https://aiperformanceoptimization.com/learn";
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "AI Resource Optimization Learning Center",
-  "description": "Expert guides and tutorials for AI resource optimization",
-  "url": canonicalURL
-};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="generator" content={Astro.generator} />
-		
-		<!-- SEO Meta Tags -->
-		<title>{title}</title>
-		<meta name="description" content={description} />
-		<meta name="keywords" content="AI resource optimization learning, AI optimization tutorials, machine learning optimization guides, AI performance tutorials, compute optimization guides, memory optimization tutorials, AI cost optimization learning" />
-		<meta name="author" content="AI Cost Optimization Experts" />
-		
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={canonicalURL} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content="/og-image.jpg" />
-		
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={canonicalURL} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content="/og-image.jpg" />
-		
-		<!-- Canonical URL -->
-		<link rel="canonical" href={canonicalURL} />
-		
-		<!-- Structured Data -->
-		<script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-		
-		<!-- Styles -->
-		<style>
-			* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-			}
-			
-			body {
-				font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-				line-height: 1.6;
-				color: #333;
-				background-color: #fafafa;
-				padding-top: 80px; /* Account for fixed navigation */
-			}
-			
-			.container {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 0 20px;
-			}
-			
-			.page-header {
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-				color: white;
-				padding: 3rem 0;
-				text-align: center;
-			}
-			
-			.page-header h1 {
-				font-size: 2.5rem;
-				margin-bottom: 1rem;
-				font-weight: 700;
-			}
-			
-			.page-header p {
-				font-size: 1.2rem;
-				opacity: 0.9;
-				max-width: 600px;
-				margin: 0 auto;
-			}
-			
-			main {
-				padding: 4rem 0;
-			}
-			
-			.categories-grid {
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				gap: 2rem;
-				margin: 3rem 0;
-			}
-			
-			.category-card {
-				background: white;
-				border-radius: 15px;
-				overflow: hidden;
-				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-				transition: transform 0.3s, box-shadow 0.3s;
-			}
-			
-			.category-card:hover {
-				transform: translateY(-5px);
-				box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-			}
-			
-			.category-header {
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-				color: white;
-				padding: 2rem;
-				text-align: center;
-			}
-			
-			.category-header h3 {
-				font-size: 1.5rem;
-				margin-bottom: 0.5rem;
-			}
-			
-			.category-header .icon {
-				font-size: 3rem;
-				margin-bottom: 1rem;
-			}
-			
-			.category-content {
-				padding: 2rem;
-			}
-			
-			.category-content p {
-				color: #666;
-				margin-bottom: 1.5rem;
-			}
-			
-			.articles-list {
-				list-style: none;
-				margin: 0;
-			}
-			
-			.articles-list li {
-				padding: 0.75rem 0;
-				border-bottom: 1px solid #eee;
-			}
-			
-			.articles-list li:last-child {
-				border-bottom: none;
-			}
-			
-			.articles-list a {
-				color: #667eea;
-				text-decoration: none;
-				font-weight: 500;
-				transition: color 0.3s;
-			}
-			
-			.articles-list a:hover {
-				color: #5a6fd8;
-			}
-			
-			.featured-section {
-				background: white;
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 3rem 0;
-				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-			}
-			
-			.featured-section h2 {
-				color: #667eea;
-				margin-bottom: 1.5rem;
-				font-size: 2rem;
-			}
-			
-			.featured-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-				gap: 1.5rem;
-			}
-			
-			.featured-article {
-				background: #f8f9fa;
-				padding: 1.5rem;
-				border-radius: 10px;
-				border-left: 4px solid #667eea;
-			}
-			
-			.featured-article h4 {
-				color: #333;
-				margin-bottom: 0.5rem;
-				font-size: 1.1rem;
-			}
-			
-			.featured-article p {
-				color: #666;
-				font-size: 0.9rem;
-				margin-bottom: 1rem;
-			}
-			
-			.featured-article a {
-				color: #667eea;
-				text-decoration: none;
-				font-weight: 600;
-				font-size: 0.9rem;
-			}
-			
-			.search-section {
-				background: white;
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 3rem 0;
-				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-				text-align: center;
-			}
-			
-			.search-section h2 {
-				color: #667eea;
-				margin-bottom: 1rem;
-			}
-			
-			.search-box {
-				max-width: 500px;
-				margin: 0 auto;
-				position: relative;
-			}
-			
-			.search-input {
-				width: 100%;
-				padding: 1rem 1.5rem;
-				border: 2px solid #e2e8f0;
-				border-radius: 50px;
-				font-size: 1rem;
-				outline: none;
-				transition: border-color 0.3s;
-			}
-			
-			.search-input:focus {
-				border-color: #667eea;
-			}
-			
-			@media (max-width: 768px) {
-				.page-header h1 {
-					font-size: 2rem;
-				}
-				
-				.categories-grid {
-					grid-template-columns: 1fr;
-				}
-				
-				.featured-grid {
-					grid-template-columns: 1fr;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Navigation currentPage="learn" />
+<Layout 
+  title={title} 
+  description={description} 
+  canonicalURL={canonicalURL}
+  currentPage="learn"
+>
+  <section class="page-header">
+    <div class="container">
+      <h1>AI Performance Optimization Learning Center</h1>
+      <p>Master AI resource management with comprehensive guides, tutorials, and best practices</p>
+    </div>
+  </section>
 
-		<section class="page-header">
-			<div class="container">
-				<h1>AI Resource Optimization Learning Center</h1>
-				<p>Master AI optimization with expert guides, tutorials, and best practices for compute, memory, and cost optimization</p>
-			</div>
-		</section>
+  <main class="container">
+    <article>
+      <h2>Learning Resources</h2>
+      <p>Explore our comprehensive collection of guides and tutorials covering all aspects of AI performance optimization, from basic concepts to advanced implementation strategies.</p>
+      
+      <div class="learning-grid">
+        {sortedPosts.map((post) => (
+          <div class="learning-card">
+            <h3><a href={`/learn/${post.slug}`}>{post.data.title}</a></h3>
+            <p>{post.data.description}</p>
+            {post.data.tags && (
+              <div class="tags">
+                {post.data.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </article>
+  </main>
 
-		<main class="container">
+  <style>
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
 
-			<section class="search-section">
-				<h2>Find What You're Looking For</h2>
-				<div class="search-box">
-					<input type="text" class="search-input" placeholder="Search for optimization topics, tutorials, or guides..." />
-				</div>
-			</section>
+    .learning-card {
+      background: var(--tetra-white);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-			<section class="featured-section">
-				<h2>Featured Articles</h2>
-				<div class="featured-grid">
-					{featuredArticles.map(article => (
-						<article class="featured-article">
-							<h4>{article.data.title}</h4>
-							<p>{article.data.description}</p>
-							<a href={`/learn/${article.id.replace('.mdx', '')}`}>Read More →</a>
-						</article>
-					))}
-				</div>
-			</section>
+    .learning-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
 
-			<div class="categories-grid">
-				<article class="category-card">
-					<div class="category-header">
-						<div class="icon">💰</div>
-						<h3>Cost Optimization</h3>
-					</div>
-					<div class="category-content">
-						<p>Learn how to reduce AI costs while maintaining or improving performance.</p>
-						<ul class="articles-list">
-							{articlesByCategory['Cost Optimization'].map(article => (
-								<li><a href={`/learn/${article.id.replace('.mdx', '')}`}>{article.data.title}</a></li>
-							))}
-						</ul>
-					</div>
-				</article>
+    .learning-card h3 {
+      margin-bottom: 1rem;
+    }
 
-				<article class="category-card">
-					<div class="category-header">
-						<div class="icon">⚡</div>
-						<h3>Performance Optimization</h3>
-					</div>
-					<div class="category-content">
-						<p>Optimize AI model performance for speed, accuracy, and efficiency.</p>
-						<ul class="articles-list">
-							{articlesByCategory['Performance Optimization'].map(article => (
-								<li><a href={`/learn/${article.id.replace('.mdx', '')}`}>{article.data.title}</a></li>
-							))}
-						</ul>
-					</div>
-				</article>
+    .learning-card h3 a {
+      color: var(--tetra-secondary);
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
 
-				<article class="category-card">
-					<div class="category-header">
-						<div class="icon">🛡️</div>
-						<h3>Resiliency</h3>
-					</div>
-					<div class="category-content">
-						<p>Strategies and best practices for building resilient, fault-tolerant AI systems.</p>
-						<ul class="articles-list">
-							{articlesByCategory['Resiliency'].map(article => (
-								<li><a href={`/learn/${article.id.replace('.mdx', '')}`}>{article.data.title}</a></li>
-							))}
-						</ul>
-					</div>
-				</article>
+    .learning-card h3 a:hover {
+      color: var(--tetra-primary);
+    }
 
-				<article class="category-card">
-					<div class="category-header">
-						<div class="icon">🔧</div>
-						<h3>Infrastructure & Tools</h3>
-					</div>
-					<div class="category-content">
-						<p>Master the tools and infrastructure needed for effective AI optimization.</p>
-						<ul class="articles-list">
-							{articlesByCategory['Infrastructure & Tools'].map(article => (
-								<li><a href={`/learn/${article.id.replace('.mdx', '')}`}>{article.data.title}</a></li>
-							))}
-						</ul>
-					</div>
-				</article>
+    .learning-card p {
+      color: #666;
+      margin-bottom: 1rem;
+    }
 
-				<article class="category-card">
-					<div class="category-header">
-						<div class="icon">📊</div>
-						<h3>Advanced Techniques</h3>
-					</div>
-					<div class="category-content">
-						<p>Advanced optimization techniques for experienced practitioners.</p>
-						<ul class="articles-list">
-							{articlesByCategory['Advanced Techniques'].map(article => (
-								<li><a href={`/learn/${article.id.replace('.mdx', '')}`}>{article.data.title}</a></li>
-							))}
-						</ul>
-					</div>
-				</article>
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
 
-				<article class="category-card">
-					<div class="category-header">
-						<div class="icon">🏢</div>
-						<h3>Enterprise Solutions</h3>
-					</div>
-					<div class="category-content">
-						<p>Enterprise-grade optimization strategies and best practices.</p>
-						<ul class="articles-list">
-							{articlesByCategory['Enterprise Solutions'].map(article => (
-								<li><a href={`/learn/${article.id.replace('.mdx', '')}`}>{article.data.title}</a></li>
-							))}
-						</ul>
-					</div>
-				</article>
-			</div>
-		</main>
+    .tag {
+      background: var(--tetra-light);
+      color: var(--tetra-primary);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
 
-		<Footer />
-	</body>
-</html> 
+    @media (max-width: 768px) {
+      .learning-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</Layout>
