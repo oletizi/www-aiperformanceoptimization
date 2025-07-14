@@ -5,8 +5,10 @@ import Hero from '../../components/Hero.astro';
 import Section from '../../components/Section.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import Grid from '../../components/Grid.astro';
+import FeatureCard from '../../components/FeatureCard.astro';
 import { getCollection } from 'astro:content';
 import learningHeroBg from '../../assets/images/learning-center-hero.jpg';
+import placeholderImg from '../../assets/images/placeholder.png';
 
 // Get all learning articles
 const allLearningPosts = await getCollection('learn');
@@ -42,69 +44,29 @@ const canonicalURL = "https://aiperformanceoptimization.com/learn";
       subtitle="Explore our comprehensive collection of guides and tutorials covering all aspects of AI performance optimization, from basic concepts to advanced implementation strategies."
     />
     
-    <Grid columns="auto" minWidth="350px">
+    <Grid columns="auto" minWidth="300px">
       {sortedPosts.map((post) => (
-        <div class="learning-card">
-          <h3><a href={`/learn/${post.slug}`}>{post.data.title}</a></h3>
-          <p>{post.data.description}</p>
-          {post.data.tags && (
-            <div class="tags">
-              {post.data.tags.map((tag) => (
-                <span class="tag">{tag}</span>
-              ))}
-            </div>
-          )}
-        </div>
+        <a href={`/learn/${post.slug}`} class="learning-card-link">
+          <FeatureCard 
+            title={post.data.title}
+            description={post.data.description}
+            image={placeholderImg}
+            imageAlt={post.data.title}
+          />
+        </a>
       ))}
     </Grid>
   </Section>
 
   <style>
-    .learning-card {
-      background: var(--tetra-white);
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .learning-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    }
-
-    .learning-card h3 {
-      margin-bottom: 1rem;
-    }
-
-    .learning-card h3 a {
-      color: var(--tetra-secondary);
+    .learning-card-link {
       text-decoration: none;
-      font-size: 1.2rem;
+      color: inherit;
+      display: block;
     }
 
-    .learning-card h3 a:hover {
-      color: var(--tetra-primary);
-    }
-
-    .learning-card p {
-      color: #666;
-      margin-bottom: 1rem;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .tag {
-      background: var(--tetra-light);
-      color: var(--tetra-primary);
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: 500;
+    .learning-card-link:hover {
+      text-decoration: none;
     }
   </style>
 </Layout>
