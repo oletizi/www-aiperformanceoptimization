@@ -27,21 +27,17 @@ export async function getStaticPaths() {
 const post = Astro.props;
 const { Content } = await post.render();
 
-// Function to get image for article
-function getArticleImage(slug: string) {
-  // Use generated PNG in public/images if it exists
-  try {
-    return new URL(`../../assets/images/${slug}.png`, import.meta.url).pathname;
-  } catch {
-    return null;
-  }
+// Function to get hero image for article
+function getHeroImage(slug: string) {
+  // Use generated PNG in public/images (served at /images/)
+  return `/images/${slug}.png`;
 }
 
 // SEO metadata
 const title = `${post.data.title} | AI Performance Optimization`;
 const description = post.data.description;
 const canonicalURL = `https://aiperformanceoptimization.com/learn/${post.slug}`;
-const articleImage = getArticleImage(post.slug);
+const articleImage = getHeroImage(post.slug);
 ---
 
 <Layout 
