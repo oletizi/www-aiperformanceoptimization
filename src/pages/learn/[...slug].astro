@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import Section from '../../components/Section.astro';
 
 export async function getStaticPaths() {
   const learningPosts = await getCollection('learn');
@@ -26,21 +28,14 @@ const canonicalURL = `https://aiperformanceoptimization.com/learn/${post.slug}`;
   currentPage="learn"
   pageType="article"
 >
-  <section class="page-header">
-    <div class="container">
-      <h1>{post.data.title}</h1>
-      <p>{post.data.description}</p>
-      {post.data.tags && (
-        <div class="article-tags">
-          {post.data.tags.map((tag) => (
-            <span class="tag">{tag}</span>
-          ))}
-        </div>
-      )}
-    </div>
-  </section>
+  <Hero 
+    title={post.data.title}
+    description={post.data.description}
+    showCta={false}
+    size="small"
+  />
 
-  <main class="container">
+  <Section>
     <article>
       <Content />
     </article>
@@ -48,25 +43,9 @@ const canonicalURL = `https://aiperformanceoptimization.com/learn/${post.slug}`;
     <div class="article-navigation">
       <a href="/learn" class="back-link">← Back to Learning Center</a>
     </div>
-  </main>
+  </Section>
 
   <style>
-    .article-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    .tag {
-      background: rgba(255, 255, 255, 0.2);
-      color: var(--tetra-white);
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
     .article-navigation {
       margin-top: 3rem;
       padding-top: 2rem;

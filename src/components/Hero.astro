@@ -8,6 +8,7 @@ interface Props {
   ctaLink?: string;
   backgroundImage?: any;
   showCta?: boolean;
+  size?: 'small' | 'medium' | 'large';
 }
 
 const { 
@@ -16,11 +17,18 @@ const {
   ctaText = "Get Started", 
   ctaLink = "/learn", 
   backgroundImage,
-  showCta = true 
+  showCta = true,
+  size = 'large'
 } = Astro.props;
+
+const sizeClasses = {
+  small: 'hero-small',
+  medium: 'hero-medium', 
+  large: 'hero-large'
+};
 ---
 
-<section class="hero">
+<section class={`hero ${sizeClasses[size]}`}>
   {backgroundImage && (
     <Image src={backgroundImage} alt="" class="hero-bg" width={1792} height={1024} />
   )}
@@ -46,10 +54,21 @@ const {
     background-position: center;
     background-attachment: fixed;
     color: var(--tetra-white);
-    padding: 6rem 0;
     text-align: center;
     position: relative;
     overflow: hidden;
+  }
+
+  .hero-large {
+    padding: 6rem 0;
+  }
+
+  .hero-medium {
+    padding: 4.5rem 0;
+  }
+
+  .hero-small {
+    padding: 3rem 0;
   }
 
   .hero-bg {
@@ -79,20 +98,44 @@ const {
   }
 
   .hero h1 {
-    font-size: 3.5rem;
     margin-bottom: 1.5rem;
     font-weight: 700;
     text-shadow: 2px 2px 4px rgba(10, 25, 47, 0.3);
   }
 
+  .hero-large h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero-medium h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-small h1 {
+    font-size: 2.2rem;
+  }
+
   .hero p {
-    font-size: 1.3rem;
-    margin-bottom: 2.5rem;
     opacity: 0.95;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
     text-shadow: 1px 1px 2px rgba(10, 25, 47, 0.3);
+  }
+
+  .hero-large p {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-medium p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-small p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
   }
 
   .cta-button {
@@ -116,11 +159,23 @@ const {
   }
 
   @media (max-width: 768px) {
-    .hero h1 {
+    .hero-large h1 {
       font-size: 2.5rem;
     }
-    .hero p {
+    .hero-medium h1 {
+      font-size: 2.2rem;
+    }
+    .hero-small h1 {
+      font-size: 1.8rem;
+    }
+    .hero-large p {
       font-size: 1.1rem;
+    }
+    .hero-medium p {
+      font-size: 1.1rem;
+    }
+    .hero-small p {
+      font-size: 1rem;
     }
   }
 </style>
