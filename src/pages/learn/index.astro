@@ -46,27 +46,16 @@ const canonicalURL = "https://aiperformanceoptimization.com/learn";
     
     <Grid columns="auto" minWidth="300px">
       {sortedPosts.map((post) => (
-        <a href={`/learn/${post.slug}`} class="learning-card-link">
-          <FeatureCard 
-            title={post.data.title}
-            description={post.data.description}
-            image={placeholderImg}
-            imageAlt={post.data.title}
-          />
-        </a>
+        <FeatureCard 
+          title={post.data.title}
+          description={post.data.description}
+          image={placeholderImg}
+          imageAlt={post.data.title}
+          link={`/learn/${post.slug}`}
+          linkText="Read Article"
+        />
       ))}
     </Grid>
   </Section>
 
-  <style>
-    .learning-card-link {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    .learning-card-link:hover {
-      text-decoration: none;
-    }
-  </style>
 </Layout>

@@ -26,37 +26,43 @@ const features = [
     title: "Cost Optimization",
     description: "Learn strategies to reduce AI costs by 30-70% while maintaining or improving performance.",
     image: costOptimizationImg,
-    imageAlt: "Cost Optimization"
+    imageAlt: "Cost Optimization",
+    link: "/learn"
   },
   {
     title: "Performance Tuning",
     description: "Optimize AI model performance for speed, accuracy, and efficiency across different providers.",
     image: performanceTuningImg,
-    imageAlt: "Performance Tuning"
+    imageAlt: "Performance Tuning",
+    link: "/learn"
   },
   {
     title: "Reliability & Resilience",
     description: "Build robust AI systems with failover strategies, error handling, and monitoring.",
     image: reliabilityResilienceImg,
-    imageAlt: "Reliability & Resilience"
+    imageAlt: "Reliability & Resilience",
+    link: "/learn"
   },
   {
     title: "Infrastructure Management",
     description: "Master tools and techniques for managing AI infrastructure at scale.",
     image: infrastructureManagementImg,
-    imageAlt: "Infrastructure Management"
+    imageAlt: "Infrastructure Management",
+    link: "/learn"
   },
   {
     title: "Monitoring & Analytics",
     description: "Implement comprehensive monitoring and analytics for AI model performance.",
     image: monitoringAnalyticsImg,
-    imageAlt: "Monitoring & Analytics"
+    imageAlt: "Monitoring & Analytics",
+    link: "/learn"
   },
   {
     title: "Best Practices",
     description: "Learn industry best practices for production-ready AI deployments.",
     image: bestPracticesImg,
-    imageAlt: "Best Practices"
+    imageAlt: "Best Practices",
+    link: "/learn"
   }
 ];
 ---
@@ -84,6 +90,7 @@ const features = [
           description={feature.description}
           image={feature.image}
           imageAlt={feature.imageAlt}
+          link={feature.link}
         />
       ))}
     </Grid>
