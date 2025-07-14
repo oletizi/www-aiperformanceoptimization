@@ -1,0 +1,41 @@
+---
+interface Props {
+  class?: string;
+  id?: string;
+  padding?: 'small' | 'medium' | 'large';
+}
+
+const { class: className = '', id, padding = 'large' } = Astro.props;
+
+const paddingClasses = {
+  small: 'section-padding-small',
+  medium: 'section-padding-medium', 
+  large: 'section-padding-large'
+};
+---
+
+<section class={`section ${paddingClasses[padding]} ${className}`} id={id}>
+  <div class="container">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .section-padding-small {
+    padding: 2rem 0;
+  }
+
+  .section-padding-medium {
+    padding: 3rem 0;
+  }
+
+  .section-padding-large {
+    padding: 4rem 0;
+  }
+</style>

@@ -1,0 +1,83 @@
+---
+interface Props {
+  columns?: 'auto' | '1' | '2' | '3' | '4';
+  gap?: 'small' | 'medium' | 'large';
+  minWidth?: string;
+  class?: string;
+}
+
+const { 
+  columns = 'auto', 
+  gap = 'large', 
+  minWidth = '300px',
+  class: className = '' 
+} = Astro.props;
+
+const columnClasses = {
+  'auto': `grid-auto-${minWidth.replace('px', '')}`,
+  '1': 'grid-1',
+  '2': 'grid-2', 
+  '3': 'grid-3',
+  '4': 'grid-4'
+};
+
+const gapClasses = {
+  small: 'gap-small',
+  medium: 'gap-medium',
+  large: 'gap-large'
+};
+---
+
+<div class={`grid ${columnClasses[columns]} ${gapClasses[gap]} ${className}`}>
+  <slot />
+</div>
+
+<style>
+  .grid {
+    display: grid;
+  }
+
+  .grid-auto-300 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .grid-auto-350 {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+
+  .grid-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .gap-small {
+    gap: 1rem;
+  }
+
+  .gap-medium {
+    gap: 1.5rem;
+  }
+
+  .gap-large {
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

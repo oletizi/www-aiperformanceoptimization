@@ -2,6 +2,9 @@
 // Import components
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Grid from '../components/Grid.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import placeholderImg from '../assets/images/placeholder.png';
 import heroBgImg from '../assets/images/hero-bg.jpg';
@@ -72,50 +75,18 @@ const features = [
     backgroundImage={heroBgImg}
   />
 
-  <section class="features">
-    <div class="container">
-      <h2>What You'll Learn</h2>
-      <div class="features-grid">
-        {features.map(feature => (
-          <FeatureCard 
-            title={feature.title}
-            description={feature.description}
-            image={feature.image}
-            imageAlt={feature.imageAlt}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
+  <Section class="features">
+    <SectionHeader title="What You'll Learn" />
+    <Grid columns="auto" minWidth="300px">
+      {features.map(feature => (
+        <FeatureCard 
+          title={feature.title}
+          description={feature.description}
+          image={feature.image}
+          imageAlt={feature.imageAlt}
+        />
+      ))}
+    </Grid>
+  </Section>
 
-  <style>
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .features {
-      padding: 4rem 0;
-    }
-
-    .features h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-      color: var(--tetra-primary);
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </Layout>

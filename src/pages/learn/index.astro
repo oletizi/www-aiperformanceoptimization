@@ -2,6 +2,9 @@
 // Import components
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
+import Section from '../../components/Section.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Grid from '../../components/Grid.astro';
 import { getCollection } from 'astro:content';
 
 // Get all learning articles
@@ -30,37 +33,30 @@ const canonicalURL = "https://aiperformanceoptimization.com/learn";
     showCta={false}
   />
 
-  <main class="container">
-    <article id="learning-resources">
-      <h2>Learning Resources</h2>
-      <p>Explore our comprehensive collection of guides and tutorials covering all aspects of AI performance optimization, from basic concepts to advanced implementation strategies.</p>
-      
-      <div class="learning-grid">
-        {sortedPosts.map((post) => (
-          <div class="learning-card">
-            <h3><a href={`/learn/${post.slug}`}>{post.data.title}</a></h3>
-            <p>{post.data.description}</p>
-            {post.data.tags && (
-              <div class="tags">
-                {post.data.tags.map((tag) => (
-                  <span class="tag">{tag}</span>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </article>
-  </main>
+  <Section id="learning-resources">
+    <SectionHeader 
+      title="Learning Resources"
+      subtitle="Explore our comprehensive collection of guides and tutorials covering all aspects of AI performance optimization, from basic concepts to advanced implementation strategies."
+    />
+    
+    <Grid columns="auto" minWidth="350px">
+      {sortedPosts.map((post) => (
+        <div class="learning-card">
+          <h3><a href={`/learn/${post.slug}`}>{post.data.title}</a></h3>
+          <p>{post.data.description}</p>
+          {post.data.tags && (
+            <div class="tags">
+              {post.data.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </Grid>
+  </Section>
 
   <style>
-    .learning-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
     .learning-card {
       background: var(--tetra-white);
       padding: 1.5rem;
@@ -106,12 +102,6 @@ const canonicalURL = "https://aiperformanceoptimization.com/learn";
       border-radius: 4px;
       font-size: 0.8rem;
       font-weight: 500;
-    }
-
-    @media (max-width: 768px) {
-      .learning-grid {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </Layout>
