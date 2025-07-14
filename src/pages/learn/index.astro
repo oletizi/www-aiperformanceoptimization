@@ -6,6 +6,7 @@ import Section from '../../components/Section.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import Grid from '../../components/Grid.astro';
 import { getCollection } from 'astro:content';
+import learningHeroBg from '../../assets/images/learning-center-hero.jpg';
 
 // Get all learning articles
 const allLearningPosts = await getCollection('learn');
@@ -32,6 +33,7 @@ const canonicalURL = "https://aiperformanceoptimization.com/learn";
     ctaLink="#learning-resources"
     showCta={false}
     size="medium"
+    backgroundImage={learningHeroBg}
   />
 
   <Section id="learning-resources">

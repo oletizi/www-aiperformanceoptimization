@@ -1,10 +1,10 @@
 [
   {
-    "id": "ai-optimization-hero",
-    "title": "AI Performance Optimization",
-    "filename": "ai-optimization-hero.png",
-    "filepath": "/Users/orion/work/www-aiperformanceoptimization/public/images/ai-optimization-hero.png",
-    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3YAGvXPsnKIrz4vEV4pbNTdo/user-R9yGlVszJQSuG7fps4d1P5dl/img-frIphf81T5zTJ9qX7GPWuPDx.png?st=2025-07-14T03%3A58%3A13Z&se=2025-07-14T05%3A58%3A13Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-13T15%3A22%3A14Z&ske=2025-07-14T15%3A22%3A14Z&sks=b&skv=2024-08-04&sig=SBtWw3mCxpR9s5qT4Hho6e5%2BjEualrzATM1zKafemQU%3D",
-    "type": "heroBackgrounds"
+    "id": "learning-center-hero",
+    "title": "AI Performance Learning Center",
+    "filename": "learning-center-hero.png",
+    "filepath": "/Users/orion/work/www-aiperformanceoptimization/public/images/learning-center-hero.png",
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3YAGvXPsnKIrz4vEV4pbNTdo/user-R9yGlVszJQSuG7fps4d1P5dl/img-dCX1ETqrdehJ63kge8954jZt.png?st=2025-07-14T04%3A41%3A32Z&se=2025-07-14T06%3A41%3A32Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-13T21%3A15%3A33Z&ske=2025-07-14T21%3A15%3A33Z&sks=b&skv=2024-08-04&sig=95wcgjELXYb3rReJswtuB6jXCMaHhsyNnX2khNNP2Xw%3D",
+    "type": "learningHeroes"
   }
 ]

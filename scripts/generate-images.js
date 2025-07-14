@@ -24,13 +24,30 @@ const THEME_COLORS = {
   orange: '#FF6B35'
 };
 
-// Image generation configurations
+// Base image generation configurations
+const BASE_CONFIGS = {
+  featureCard: {
+    size: "1024x1024",
+    quality: "standard",
+    basePrompt: "A modern, professional illustration for {title}. {specificElements} Use tech-friendly colors with blues ({primary}) and {accentColor}. Clean, minimalist style suitable for a technology website card. Abstract, geometric design."
+  },
+  heroBackground: {
+    size: "1792x1024", 
+    quality: "hd",
+    basePrompt: "A sophisticated, professional hero background for {title}. {specificElements} Use a gradient from deep blue ({primary}) to lighter blue ({secondary}) with subtle {accent} accents. Abstract, atmospheric style with depth and movement. Wide landscape format perfect for website hero sections."
+  },
+  pageHero: {
+    size: "1792x1024",
+    quality: "hd", 
+    basePrompt: "A professional, elegant hero background for {title}. {specificElements} Use a sophisticated color palette with deep blues ({primary}), lighter blues ({secondary}) and {accent} accents. Clean, modern aesthetic with subtle depth and professional feel. Wide format suitable for page hero sections."
+  }
+};
+
+// Image generation configurations by category
 const IMAGE_CONFIGS = {
   // Feature card images (400x200 for cards)
   featureCards: {
-    size: "1024x1024", // Will be cropped/resized by Astro
-    quality: "standard",
-    basePrompt: "A modern, professional illustration for {title}. {specificElements} Use tech-friendly colors with blues ({primary}) and {accentColor}. Clean, minimalist style suitable for a technology website card. Abstract, geometric design.",
+    ...BASE_CONFIGS.featureCard,
     images: [
       {
         id: 'cost-optimization',
@@ -73,15 +90,26 @@ const IMAGE_CONFIGS = {
   
   // Hero background images (wide format for hero sections)
   heroBackgrounds: {
-    size: "1792x1024", // 16:9 wide format
-    quality: "hd",
-    basePrompt: "A sophisticated, professional hero background for {title}. {specificElements} Use a gradient from deep blue ({primary}) to lighter blue ({secondary}) with subtle {accent} accents. Abstract, atmospheric style with depth and movement. Wide landscape format perfect for website hero sections.",
+    ...BASE_CONFIGS.heroBackground,
     images: [
       {
         id: 'ai-optimization-hero',
         title: 'AI Performance Optimization',
         specificElements: 'Abstract technological landscape with floating neural network nodes, data streams, performance metrics visualizations, and optimization symbols. Subtle geometric patterns and light particles creating depth.',
         accent: 'teal highlights'
+      }
+    ]
+  },
+
+  // Learning center page heroes
+  learningHeroes: {
+    ...BASE_CONFIGS.pageHero,
+    images: [
+      {
+        id: 'learning-center-hero',
+        title: 'AI Performance Learning Center',
+        specificElements: 'Abstract educational and knowledge elements including flowing data streams, interconnected learning nodes, book and document symbols, graduation elements, and neural network patterns representing knowledge transfer. Subtle geometric patterns suggesting growth and learning.',
+        accent: 'warm orange and teal'
       }
     ]
   }
@@ -175,6 +203,30 @@ async function generateImageSet(setName, config, outputDir = 'public/images') {
   return results;
 }
 
+// Utility function to add new image configurations dynamically
+function addImageConfig(setName, baseConfigType, images) {
+  if (!BASE_CONFIGS[baseConfigType]) {
+    throw new Error(`Unknown base config type: ${baseConfigType}`);
+  }
+  
+  IMAGE_CONFIGS[setName] = {
+    ...BASE_CONFIGS[baseConfigType],
+    images: images
+  };
+  
+  console.log(`Added image config set: ${setName} (${images.length} images)`);
+}
+
+// Utility function to generate a single custom image
+async function generateCustomImage(imageConfig, baseConfigType = 'pageHero', outputDir = 'public/images') {
+  if (!BASE_CONFIGS[baseConfigType]) {
+    throw new Error(`Unknown base config type: ${baseConfigType}`);
+  }
+  
+  const config = BASE_CONFIGS[baseConfigType];
+  return await generateImage(imageConfig, config, outputDir);
+}
+
 async function generateAllImages(sets = null) {
   if (!process.env.OPENAI_API_KEY) {
     console.error('OPENAI_API_KEY environment variable is required');
@@ -186,6 +238,7 @@ async function generateAllImages(sets = null) {
   // Determine which sets to generate
   const setsToGenerate = sets || Object.keys(IMAGE_CONFIGS);
   console.log(`Generating images for: ${setsToGenerate.join(', ')}`);
+  console.log(`Available sets: ${Object.keys(IMAGE_CONFIGS).join(', ')}`);
   
   const allResults = [];
   
@@ -195,6 +248,7 @@ async function generateAllImages(sets = null) {
       allResults.push(...results);
     } else {
       console.warn(`Unknown image set: ${setName}`);
+      console.log(`Available sets: ${Object.keys(IMAGE_CONFIGS).join(', ')}`);
     }
   }
   
