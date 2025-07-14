@@ -33,14 +33,14 @@ function getArticleImage(slug: string) {
 }
 
 // Helper: normalize categories to array
-function getCategories(post) {
+function getCategories(post: any): string[] {
   const cat = post.data.category;
   if (!cat) return [];
   return Array.isArray(cat) ? cat : [cat];
 }
 
 // Build category -> posts map
-const categoryMap = {};
+const categoryMap: Record<string, typeof allLearningPosts> = {};
 for (const post of allLearningPosts) {
   for (const cat of getCategories(post)) {
     if (!categoryMap[cat]) categoryMap[cat] = [];
@@ -48,11 +48,25 @@ for (const post of allLearningPosts) {
   }
 }
 
-// Get sorted unique categories
-const sortedCategories = Object.keys(categoryMap).sort((a, b) => a.localeCompare(b));
+// Define user journey order
+const journeyOrder = [
+  "Beginner's Guide",
+  "Integration",
+  "Infrastructure & Tools",
+  "Performance Optimization",
+  "Cost Optimization",
+  "Advanced Techniques",
+  "Resiliency",
+  "Enterprise Solutions"
+];
+const allCategories = Object.keys(categoryMap);
+const sortedCategories = [
+  ...journeyOrder.filter((cat) => allCategories.includes(cat)),
+  ...allCategories.filter((cat) => !journeyOrder.includes(cat)).sort((a, b) => a.localeCompare(b))
+];
 // Sort posts within each category
 for (const cat of sortedCategories) {
-  categoryMap[cat].sort((a, b) => a.data.title.localeCompare(b.data.title));
+  categoryMap[cat].sort((a: any, b: any) => a.data.title.localeCompare(b.data.title));
 }
 
 // SEO metadata
@@ -83,11 +97,11 @@ const canonicalURL = "https://aiperformanceoptimization.com/learn";
       subtitle="Explore our comprehensive collection of guides and tutorials covering all aspects of AI performance optimization, from basic concepts to advanced implementation strategies."
     />
     
-    {sortedCategories.map((cat) => (
+    {sortedCategories.map((cat: string) => (
       <>
         <SectionHeader title={cat} />
         <Grid columns="auto" minWidth="300px">
-          {categoryMap[cat].map((post) => (
+          {categoryMap[cat].map((post: any) => (
             <FeatureCard 
               title={post.data.title}
               description={post.data.description}
