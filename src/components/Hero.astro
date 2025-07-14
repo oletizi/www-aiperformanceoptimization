@@ -57,20 +57,25 @@ const sizeClasses = {
     text-align: center;
     position: relative;
     overflow: hidden;
+    margin-top: -80px;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   .hero-large {
-    min-height: 12rem;
+    min-height: calc(14.4rem + 160px);
+    padding: calc(3rem + 80px) 0 3rem 0;
   }
 
   .hero-medium {
-    min-height: 9rem;
+    min-height: calc(10.8rem + 160px);
+    padding: calc(3rem + 80px) 0 3rem 0;
   }
 
   .hero-small {
-    min-height: 6rem;
+    min-height: calc(7.2rem + 160px);
+    padding: calc(3rem + 80px) 0 3rem 0;
   }
 
   .hero-bg {
@@ -98,7 +103,7 @@ const sizeClasses = {
     position: relative;
     z-index: 2;
     width: 100%;
-    padding: 3rem 20px;
+    padding: 0 20px;
   }
 
   .hero h1 {
@@ -108,15 +113,15 @@ const sizeClasses = {
   }
 
   .hero-large h1 {
-    font-size: 3.5rem;
+    font-size: 4.2rem;
   }
 
   .hero-medium h1 {
-    font-size: 2.8rem;
+    font-size: 3.36rem;
   }
 
   .hero-small h1 {
-    font-size: 2.2rem;
+    font-size: 2.64rem;
   }
 
   .hero p {
@@ -128,18 +133,18 @@ const sizeClasses = {
   }
 
   .hero-large p {
-    font-size: 1.3rem;
-    margin-bottom: 2.5rem;
+    font-size: 1.56rem;
+    margin-bottom: 3rem;
   }
 
   .hero-medium p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1.44rem;
+    margin-bottom: 2.4rem;
   }
 
   .hero-small p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.32rem;
+    margin-bottom: 1.8rem;
   }
 
   .cta-button {
@@ -164,22 +169,22 @@ const sizeClasses = {
 
   @media (max-width: 768px) {
     .hero-large h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
     }
     .hero-medium h1 {
-      font-size: 2.2rem;
+      font-size: 2.64rem;
     }
     .hero-small h1 {
-      font-size: 1.8rem;
+      font-size: 2.16rem;
     }
     .hero-large p {
-      font-size: 1.1rem;
+      font-size: 1.32rem;
     }
     .hero-medium p {
-      font-size: 1.1rem;
+      font-size: 1.32rem;
     }
     .hero-small p {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
   }
 </style>
