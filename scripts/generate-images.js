@@ -8,8 +8,21 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Initialize OpenAI
+let apiKey = process.env.OPENAI_API_KEY;
+if (!apiKey) {
+  try {
+    const credPath = path.join(__dirname, '../credentials-openai.txt');
+    if (fs.existsSync(credPath)) {
+      const lines = fs.readFileSync(credPath, 'utf-8').split('\n');
+      apiKey = lines[0].trim();
+    }
+  } catch (e) {
+    // Ignore, will error below if still not set
+  }
+}
+
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey,
 });
 
 // Theme colors for consistency
@@ -295,8 +308,8 @@ async function generateCustomImage(imageConfig, baseConfigType = 'pageHero', out
 }
 
 async function generateAllImages(sets = null) {
-  if (!process.env.OPENAI_API_KEY) {
-    console.error('OPENAI_API_KEY environment variable is required');
+  if (!apiKey) {
+    console.error('OPENAI_API_KEY environment variable is required, or credentials-openai.txt must exist in the project root');
     console.log('Please set your OpenAI API key:');
     console.log('export OPENAI_API_KEY="your-api-key-here"');
     process.exit(1);
