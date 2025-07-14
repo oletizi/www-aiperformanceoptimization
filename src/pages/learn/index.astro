@@ -69,10 +69,17 @@ for (const cat of sortedCategories) {
   categoryMap[cat].sort((a: any, b: any) => a.data.title.localeCompare(b.data.title));
 }
 
+// Utility to convert category to kebab-case id
+function categoryToId(cat: string): string {
+  return cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
 // SEO metadata
 const title = "AI Performance Optimization Learning Center: Expert Guides & Tutorials";
 const description = "Comprehensive learning resources for AI performance optimization. From beginner guides to advanced techniques - master AI cost reduction, scaling, and optimization strategies.";
 const canonicalURL = "https://aiperformanceoptimization.com/learn";
+// Site nav height in rem (should match Navigation.astro)
+const siteNavHeight = 4;
 ---
 
 <Layout 
@@ -96,9 +103,16 @@ const canonicalURL = "https://aiperformanceoptimization.com/learn";
       title="Learning Resources"
       subtitle="Explore our comprehensive collection of guides and tutorials covering all aspects of AI performance optimization, from basic concepts to advanced implementation strategies."
     />
+    <nav class="category-nav">
+      <ul>
+        {sortedCategories.map((cat: string) => (
+          <li><a href={`#${categoryToId(cat)}`}>{cat}</a></li>
+        ))}
+      </ul>
+    </nav>
     
     {sortedCategories.map((cat: string) => (
-      <>
+      <section id={categoryToId(cat)}>
         <SectionHeader title={cat} />
         <Grid columns="auto" minWidth="300px">
           {categoryMap[cat].map((post: any) => (
@@ -113,8 +127,62 @@ const canonicalURL = "https://aiperformanceoptimization.com/learn";
             />
           ))}
         </Grid>
-      </>
+      </section>
     ))}
   </Section>
 
 </Layout>
+
+<style>
+  .category-nav {
+    background: var(--tetra-white, #fff);
+    /* Remove border-radius for flush look */
+    border-radius: 0;
+    margin: 0 0 2.5rem 0;
+    padding: 0.5rem 2rem;
+    /* Stronger drop shadow for overlay effect */
+    box-shadow: 0 6px 24px 0 rgba(27,54,93,0.10), 0 1.5px 0 0 var(--tetra-gray, #F5F7FA);
+    position: sticky;
+    top: 4rem;
+    z-index: 110;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--tetra-gray, #F5F7FA);
+  }
+  .category-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .category-nav a {
+    color: var(--tetra-primary, #1B365D);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    background: none;
+  }
+  .category-nav a:hover, .category-nav a:focus {
+    background: var(--tetra-accent, #00BFB3);
+    color: #fff;
+  }
+  @media (max-width: 600px) {
+    .category-nav {
+      padding: 0.5rem 0.5rem;
+      font-size: 0.95rem;
+    }
+    .category-nav ul {
+      gap: 0.7rem;
+    }
+    .category-nav a {
+      padding: 0.4rem 0.7rem;
+      font-size: 1rem;
+    }
+  }
+</style>
