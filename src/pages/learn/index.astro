@@ -26,26 +26,10 @@ import optimizationPlatformsImg from '../../assets/images/popular-optimization-p
 const allLearningPosts = await getCollection('learn');
 
 // Image mapping for learning articles
-const articleImages = {
-  'getting-started': gettingStartedImg,
-  'advanced-optimization-techniques': costOptimizationImg, // Using cost optimization image for advanced techniques
-  'ai-model-performance-troubleshooting': performanceMonitoringImg, // Using performance monitoring image
-  'major-ai-provider-integration': providerIntegrationImg,
-  'ai-model-error-handling-techniques': errorHandlingImg,
-  'ai-api-fallback-implementation': errorHandlingImg, // Related to error handling
-  'ai-model-error-recovery': errorHandlingImg, // Related to error handling
-  'unified-ai-model-management': unifiedManagementImg,
-  'monitoring-ai-model-health': modelHealthImg,
-  'intelligent-model-selection': intelligentRoutingImg, // Using routing image for intelligent selection
-  'load-balancing-for-ai-models': intelligentRoutingImg, // Related to routing
-  'ai-model-routing-load-balancing': intelligentRoutingImg, // Related to routing
-  'automatic-token-optimization': tokenOptimizationImg,
-  'popular-optimization-platforms': optimizationPlatformsImg,
-};
-
 // Function to get image for article
-function getArticleImage(slug) {
-  return articleImages[slug] || placeholderImg;
+function getArticleImage(slug: string) {
+  // Use generated PNG in public/images (served at /images/)
+  return `/images/${slug}.png`;
 }
 
 // Sort by title for consistent ordering
@@ -88,6 +72,7 @@ const canonicalURL = "https://aiperformanceoptimization.com/learn";
           imageAlt={post.data.title}
           link={`/learn/${post.slug}`}
           linkText="Read Article"
+          placeholder={placeholderImg}
         />
       ))}
     </Grid>

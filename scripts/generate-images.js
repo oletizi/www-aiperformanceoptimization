@@ -344,12 +344,45 @@ async function generateAllImages(sets = null) {
   return allResults;
 }
 
+// Utility to convert slug to title case
+function slugToTitle(slug) {
+  return slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
+// Generate images for all slugs in scripts/all-learn-slugs.txt
+async function generateImagesForAllSlugs() {
+  const slugsPath = path.join(__dirname, 'all-learn-slugs.txt');
+  if (!fs.existsSync(slugsPath)) {
+    console.error('all-learn-slugs.txt not found.');
+    process.exit(1);
+  }
+  const slugs = fs.readFileSync(slugsPath, 'utf-8').split('\n').map(s => s.trim()).filter(Boolean);
+  for (const slug of slugs) {
+    const outPath = path.join(__dirname, '../public/images', `${slug}.png`);
+    if (fs.existsSync(outPath)) {
+      console.log(`Image already exists for ${slug}, skipping.`);
+      continue;
+    }
+    const title = slugToTitle(slug);
+    const prompt = `A modern, professional illustration for ${title}. Abstract, geometric, technology-inspired. Clean, minimalist style.`;
+    const config = {
+      size: '1024x1024',
+      quality: 'standard',
+      basePrompt: prompt
+    };
+    const imageConfig = { id: slug, title, specificElements: '', accentColor: 'blues' };
+    await generateImage(imageConfig, config, '../public/images');
+    // Add delay to respect rate limits
+    await new Promise(resolve => setTimeout(resolve, 2000));
+  }
+}
+
 // Command line interface
 const args = process.argv.slice(2);
-if (args.length > 0) {
-  // Generate specific sets if provided as arguments
+if (args.includes('all-learn-slugs')) {
+  generateImagesForAllSlugs().catch(console.error);
+} else if (args.length > 0) {
   generateAllImages(args).catch(console.error);
 } else {
-  // Generate all sets by default  
   generateAllImages().catch(console.error);
 }

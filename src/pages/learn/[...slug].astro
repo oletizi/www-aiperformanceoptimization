@@ -27,27 +27,14 @@ export async function getStaticPaths() {
 const post = Astro.props;
 const { Content } = await post.render();
 
-// Image mapping for learning articles
-const articleImages = {
-  'getting-started': gettingStartedImg,
-  'advanced-optimization-techniques': costOptimizationImg,
-  'ai-model-performance-troubleshooting': performanceMonitoringImg,
-  'major-ai-provider-integration': providerIntegrationImg,
-  'ai-model-error-handling-techniques': errorHandlingImg,
-  'ai-api-fallback-implementation': errorHandlingImg,
-  'ai-model-error-recovery': errorHandlingImg,
-  'unified-ai-model-management': unifiedManagementImg,
-  'monitoring-ai-model-health': modelHealthImg,
-  'intelligent-model-selection': intelligentRoutingImg,
-  'load-balancing-for-ai-models': intelligentRoutingImg,
-  'ai-model-routing-load-balancing': intelligentRoutingImg,
-  'automatic-token-optimization': tokenOptimizationImg,
-  'popular-optimization-platforms': optimizationPlatformsImg,
-};
-
 // Function to get image for article
-function getArticleImage(slug) {
-  return articleImages[slug] || null;
+function getArticleImage(slug: string) {
+  // Use generated PNG in public/images if it exists
+  try {
+    return new URL(`../../assets/images/${slug}.png`, import.meta.url).pathname;
+  } catch {
+    return null;
+  }
 }
 
 // SEO metadata

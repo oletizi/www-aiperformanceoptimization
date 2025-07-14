@@ -4,18 +4,23 @@ import { Image } from 'astro:assets';
 interface Props {
   title: string;
   description: string;
-  image: any; // Always a valid import
+  image: any; // Can be a string or import
   imageAlt: string;
   link?: string;
   linkText?: string;
+  placeholder?: string;
 }
 
-const { title, description, image, imageAlt, link, linkText = "Learn more" } = Astro.props;
+const { title, description, image, imageAlt, link, linkText = "Learn more", placeholder } = Astro.props;
 ---
 
 <div class="feature-card">
   <div class="feature-image">
-    <Image src={image} alt={imageAlt} width={400} height={200} class="lofi-img" />
+    {typeof image === 'string' ? (
+      <img src={image} alt={imageAlt} width={400} height={200} class="lofi-img" loading="lazy" onError={(e) => { if (placeholder) (e.target as HTMLImageElement).src = placeholder; }} />
+    ) : (
+      <Image src={image} alt={imageAlt} width={400} height={200} class="lofi-img" />
+    )}
     <div class="grain-overlay"></div>
     <div class="scanlines-overlay"></div>
     <div class="color-noise-overlay"></div>
