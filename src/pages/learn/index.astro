@@ -1,6 +1,7 @@
 ---
 // Import components
 import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
 import { getCollection } from 'astro:content';
 
 // Get all learning articles
@@ -21,15 +22,16 @@ const canonicalURL = "https://aiperformanceoptimization.com/learn";
   canonicalURL={canonicalURL}
   currentPage="learn"
 >
-  <section class="page-header">
-    <div class="container">
-      <h1>AI Performance Optimization Learning Center</h1>
-      <p>Master AI resource management with comprehensive guides, tutorials, and best practices</p>
-    </div>
-  </section>
+  <Hero 
+    title="AI Performance Optimization Learning Center"
+    description="Master AI resource management with comprehensive guides, tutorials, and best practices for optimizing AI performance, reducing costs, and scaling efficiently."
+    ctaText="Browse Learning Resources"
+    ctaLink="#learning-resources"
+    showCta={false}
+  />
 
   <main class="container">
-    <article>
+    <article id="learning-resources">
       <h2>Learning Resources</h2>
       <p>Explore our comprehensive collection of guides and tutorials covering all aspects of AI performance optimization, from basic concepts to advanced implementation strategies.</p>
       
