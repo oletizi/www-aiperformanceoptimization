@@ -32,8 +32,28 @@ function getArticleImage(slug: string) {
   return `/images/${slug}.png`;
 }
 
-// Sort by title for consistent ordering
-const sortedPosts = allLearningPosts.sort((a, b) => a.data.title.localeCompare(b.data.title));
+// Helper: normalize categories to array
+function getCategories(post) {
+  const cat = post.data.category;
+  if (!cat) return [];
+  return Array.isArray(cat) ? cat : [cat];
+}
+
+// Build category -> posts map
+const categoryMap = {};
+for (const post of allLearningPosts) {
+  for (const cat of getCategories(post)) {
+    if (!categoryMap[cat]) categoryMap[cat] = [];
+    categoryMap[cat].push(post);
+  }
+}
+
+// Get sorted unique categories
+const sortedCategories = Object.keys(categoryMap).sort((a, b) => a.localeCompare(b));
+// Sort posts within each category
+for (const cat of sortedCategories) {
+  categoryMap[cat].sort((a, b) => a.data.title.localeCompare(b.data.title));
+}
 
 // SEO metadata
 const title = "AI Performance Optimization Learning Center: Expert Guides & Tutorials";
@@ -63,19 +83,24 @@ const canonicalURL = "https://aiperformanceoptimization.com/learn";
       subtitle="Explore our comprehensive collection of guides and tutorials covering all aspects of AI performance optimization, from basic concepts to advanced implementation strategies."
     />
     
-    <Grid columns="auto" minWidth="300px">
-      {sortedPosts.map((post) => (
-        <FeatureCard 
-          title={post.data.title}
-          description={post.data.description}
-          image={getArticleImage(post.slug)}
-          imageAlt={post.data.title}
-          link={`/learn/${post.slug}`}
-          linkText="Read Article"
-          placeholder={placeholderImg}
-        />
-      ))}
-    </Grid>
+    {sortedCategories.map((cat) => (
+      <>
+        <SectionHeader title={cat} />
+        <Grid columns="auto" minWidth="300px">
+          {categoryMap[cat].map((post) => (
+            <FeatureCard 
+              title={post.data.title}
+              description={post.data.description}
+              image={getArticleImage(post.slug)}
+              imageAlt={post.data.title}
+              link={`/learn/${post.slug}`}
+              linkText="Read Article"
+              placeholder={placeholderImg}
+            />
+          ))}
+        </Grid>
+      </>
+    ))}
   </Section>
 
 </Layout>
