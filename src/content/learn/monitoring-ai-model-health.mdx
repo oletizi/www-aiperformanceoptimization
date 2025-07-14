@@ -8,7 +8,7 @@ category: ["Infrastructure & Tools", "Performance Optimization", "Cost Optimizat
 
 import TetrateServiceCard from '../../components/TetrateServiceCard.astro';
 
-# Monitoring AI Model Health
+<!-- Removed duplicate H1: Monitoring AI Model Health -->
 
 Comprehensive health monitoring is essential for maintaining reliable AI model deployments. This guide covers monitoring strategies, key metrics, alerting systems, and implementation patterns.
 
@@ -586,7 +586,9 @@ class ProductionAIHealthMonitor:
             # Collect system metrics, cost metrics, etc.
             await asyncio.sleep(60)  # Collect every minute
 
-# Usage
+## Usage
+
+```python
 models = [
     {'id': 'gpt-4', 'endpoint': 'https://api.openai.com/v1'},
     {'id': 'claude-3', 'endpoint': 'https://api.anthropic.com/v1'},

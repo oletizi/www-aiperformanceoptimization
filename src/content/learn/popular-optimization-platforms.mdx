@@ -36,10 +36,10 @@ OpenRouter provides a unified API that automatically routes requests to the most
 #### 1. Account Setup
 
 ```bash
-# Install OpenRouter SDK
+## Install OpenRouter SDK
 pip install openrouter
 
-# Set up API key
+## Set up API key
 export OPENROUTER_API_KEY="your-api-key-here"
 ```
 
@@ -48,13 +48,13 @@ export OPENROUTER_API_KEY="your-api-key-here"
 ```python
 import openrouter
 
-# Initialize client
+## Initialize client
 client = openrouter.Client(
     api_key="your-api-key",
     base_url="https://openrouter.ai/api/v1"
 )
 
-# Simple request with automatic routing
+## Simple request with automatic routing
 response = client.chat.completions.create(
     model="openai/gpt-3.5-turbo",  # Will auto-route to best provider
     messages=[
@@ -69,7 +69,7 @@ print(response.choices[0].message.content)
 #### 3. Advanced Configuration
 
 ```python
-# Configure automatic optimization
+## Configure automatic optimization
 client = openrouter.Client(
     api_key="your-api-key",
     optimization_config={
@@ -80,7 +80,7 @@ client = openrouter.Client(
     }
 )
 
-# Request with optimization hints
+## Request with optimization hints
 response = client.chat.completions.create(
     model="auto",  # Let OpenRouter choose the best model
     messages=[{"role": "user", "content": "Summarize this text"}],
@@ -121,10 +121,10 @@ LangChain is a powerful framework for building AI applications with built-in opt
 #### 1. Installation and Setup
 
 ```bash
-# Install LangChain
+## Install LangChain
 pip install langchain langchain-openai langchain-anthropic
 
-# Set up environment variables
+## Set up environment variables
 export OPENAI_API_KEY="your-openai-key"
 export ANTHROPIC_API_KEY="your-anthropic-key"
 ```
@@ -138,10 +138,10 @@ from langchain.cache import InMemoryCache
 from langchain.globals import set_llm_cache
 import langchain
 
-# Enable caching for cost savings
+## Enable caching for cost savings
 set_llm_cache(InMemoryCache())
 
-# Create optimized model instances
+## Create optimized model instances
 models = {
     'gpt-3.5': ChatOpenAI(
         model="gpt-3.5-turbo",
@@ -154,14 +154,14 @@ models = {
     )
 }
 
-# Model selection function
+## Model selection function
 def select_model(task_complexity, budget):
     if task_complexity == 'simple' and budget < 0.01:
         return models['claude-haiku']
     else:
         return models['gpt-3.5']
 
-# Usage example
+## Usage example
 def process_request(prompt, task_complexity='medium', budget=0.02):
     model = select_model(task_complexity, budget)
     response = model.invoke(prompt)
@@ -175,7 +175,7 @@ from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain.memory import ConversationBufferMemory
 
-# Create optimized prompt template
+## Create optimized prompt template
 template = """
 You are a helpful AI assistant. Provide concise, accurate responses.
 
@@ -189,7 +189,7 @@ prompt = PromptTemplate(
     template=template
 )
 
-# Create chain with memory and optimization
+## Create chain with memory and optimization
 chain = LLMChain(
     llm=models['gpt-3.5'],
     prompt=prompt,
@@ -200,7 +200,7 @@ chain = LLMChain(
     verbose=False
 )
 
-# Usage
+## Usage
 response = chain.run({
     "context": "Previous conversation context",
     "question": "What is the capital of France?"
@@ -230,10 +230,10 @@ Together AI specializes in providing cost-effective access to open-source AI mod
 #### 1. Account Setup
 
 ```bash
-# Install Together AI SDK
+## Install Together AI SDK
 pip install together
 
-# Set up API key
+## Set up API key
 export TOGETHER_API_KEY="your-together-api-key"
 ```
 
@@ -242,14 +242,14 @@ export TOGETHER_API_KEY="your-together-api-key"
 ```python
 import together
 
-# Initialize client
+## Initialize client
 together.api_key = "your-api-key"
 
-# List available models
+## List available models
 models = together.Models.list()
 print("Available models:", [model['name'] for model in models])
 
-# Make a request
+## Make a request
 response = together.Complete.create(
     prompt="Explain machine learning in simple terms",
     model="togethercomputer/llama-2-7b-chat",
@@ -266,7 +266,7 @@ print(response['output']['choices'][0]['text'])
 #### 3. Cost Optimization Configuration
 
 ```python
-# Optimized request configuration
+## Optimized request configuration
 def optimized_request(prompt, task_type="general"):
     # Model selection based on task
     model_map = {
@@ -323,7 +323,7 @@ Tetrate provides enterprise-grade AI routing and optimization services.
 #### 1. Enterprise Setup
 
 ```python
-# Tetrate configuration (example)
+## Tetrate configuration (example)
 tetrate_config = {
     "api_key": "your-tetrate-key",
     "organization_id": "your-org-id",
@@ -337,7 +337,7 @@ tetrate_config = {
 #### 2. Agent Configuration
 
 ```python
-# Define AI agents for different tasks
+## Define AI agents for different tasks
 agents = {
     "summarizer": {
         "model": "gpt-3.5-turbo",
@@ -359,7 +359,7 @@ agents = {
     }
 }
 
-# Route requests to appropriate agents
+## Route requests to appropriate agents
 def route_request(task_type, content, budget):
     agent = agents.get(task_type, agents["generator"])
     
@@ -396,7 +396,7 @@ def route_request(task_type, content, budget):
 ### OpenRouter Optimization
 
 ```python
-# Optimize OpenRouter usage
+## Optimize OpenRouter usage
 optimization_config = {
     "auto_route": True,
     "cache_responses": True,
@@ -409,7 +409,7 @@ optimization_config = {
 ### LangChain Optimization
 
 ```python
-# LangChain optimization features
+## LangChain optimization features
 langchain_config = {
     "enable_caching": True,
     "cache_ttl": 3600,  # 1 hour
@@ -422,7 +422,7 @@ langchain_config = {
 ### Together AI Optimization
 
 ```python
-# Together AI cost optimization
+## Together AI cost optimization
 together_optimization = {
     "model_selection": "cost_based",
     "token_optimization": True,

@@ -6,23 +6,7 @@ readingTime: "10 minutes"
 category: ["Infrastructure & Tools", "Performance Optimization", "Advanced Techniques", "Resiliency"]
 ---
 
-# AI API Fallback Implementation
-
-Implementing robust fallback mechanisms for AI APIs is essential for production applications. This guide covers practical patterns and code examples for handling API failures gracefully.
-
-## Common AI API Failure Scenarios
-
-- **Rate Limiting**: 429 errors from API providers
-- **Authentication Failures**: Invalid or expired API keys
-- **Network Issues**: Timeouts and connection problems
-- **Service Outages**: Provider downtime
-- **Quota Exhaustion**: Monthly or daily limits reached
-
-## Implementation Patterns
-
-### 1. Simple Sequential Fallback
-
-The most basic pattern - try providers in order until one succeeds:
+## Usage
 
 ```python
 import asyncio

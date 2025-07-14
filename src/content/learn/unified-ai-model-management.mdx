@@ -8,7 +8,7 @@ category: ["Infrastructure & Tools", "Performance Optimization", "Cost Optimizat
 
 import TetrateServiceCard from '../../components/TetrateServiceCard.astro';
 
-# Unified AI Model Management
+<!-- Removed duplicate H1: Unified AI Model Management -->
 
 Managing connectivity to multiple AI models from different providers can be complex and error-prone. A unified AI model management system provides a centralized approach to handle multiple providers, abstract away differences, and provide a consistent interface for your applications.
 
@@ -421,7 +421,9 @@ async def example_usage():
     for provider, data in metrics.items():
         print(f"  {provider}: {data['requests']} requests, {data['errors']} errors")
 
-# Run the example
+## Run the example
+
+```python
 if __name__ == "__main__":
     asyncio.run(example_usage())
 ```

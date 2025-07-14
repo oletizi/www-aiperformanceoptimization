@@ -6,7 +6,7 @@ readingTime: "11 minutes"
 category: ["Infrastructure & Tools", "Performance Optimization", "Advanced Techniques", "Resiliency"]
 ---
 
-# Load Balancing for AI Models
+<!-- Removed duplicate H1: Load Balancing for AI Models -->
 
 Load balancing is crucial for distributing AI model requests across multiple providers, ensuring optimal performance, cost efficiency, and reliability.
 
@@ -42,7 +42,7 @@ class RoundRobinLoadBalancer:
         provider = await self.get_next_provider()
         return await self._call_provider(provider, prompt, model)
 
-# Usage
+## Usage
 providers = ['openai', 'anthropic', 'google', 'together']
 balancer = RoundRobinLoadBalancer(providers)
 result = await balancer.generate_text("Hello, world!")
@@ -73,7 +73,7 @@ class WeightedRoundRobinLoadBalancer:
             self.current_index = (self.current_index + 1) % len(self.providers)
             return provider
 
-# Usage - OpenAI gets 3x the traffic, others get 1x
+## Usage - OpenAI gets 3x the traffic, others get 1x
 providers_with_weights = {
     'openai': 3,
     'anthropic': 1,
@@ -352,10 +352,10 @@ class ProductionAILoadBalancer:
         
         return await circuit_breaker.call(call_provider)
 
-# Usage
+## Usage
 balancer = ProductionAILoadBalancer()
 
-# Use different strategies
+## Use different strategies
 result1 = await balancer.generate_text("Hello", "gpt-4", "round_robin")
 result2 = await balancer.generate_text("Hello", "gpt-4", "cost_based")
 result3 = await balancer.generate_text("Hello", "gpt-4", "health_aware")

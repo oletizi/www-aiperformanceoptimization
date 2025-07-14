@@ -8,7 +8,7 @@ category: ["Infrastructure & Tools", "Performance Optimization", "Advanced Techn
 
 import TetrateServiceCard from '../../components/TetrateServiceCard.astro';
 
-# AI Model Routing and Load Balancing
+<!-- Removed duplicate H1: AI Model Routing and Load Balancing -->
 
 As AI applications scale, managing traffic across multiple models and providers becomes critical. Intelligent routing and load balancing ensure optimal performance, cost efficiency, and reliability by distributing requests based on various factors like cost, performance, availability, and business requirements.
 
@@ -667,7 +667,9 @@ async def route_request(prompt: str, task_complexity: str = 'medium', budget: fl
     
     return result
 
-# Usage example
+## Usage example
+
+```python
 async def main():
     prompts = [
         "Summarize the benefits of AI routing",

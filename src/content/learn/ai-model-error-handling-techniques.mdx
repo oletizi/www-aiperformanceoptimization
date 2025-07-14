@@ -8,7 +8,7 @@ category: ["Infrastructure & Tools", "Performance Optimization", "Advanced Techn
 
 import TetrateServiceCard from '../../components/TetrateServiceCard.astro';
 
-# AI Model Error Handling Techniques
+<!-- Removed duplicate H1: AI Model Error Handling Techniques -->
 
 Effective error handling is crucial for building reliable AI applications. This guide covers comprehensive error handling strategies, retry mechanisms, graceful degradation, and implementation patterns.
 
@@ -95,7 +95,8 @@ class RetryHandler:
         
         return False
 
-# Usage
+## Usage
+
 retry_handler = RetryHandler(max_retries=3, base_delay=1.0)
 
 async def call_ai_model(prompt: str) -> str:
@@ -167,7 +168,8 @@ class CircuitBreaker:
         """Get current circuit breaker state"""
         return self.state
 
-# Usage
+## Usage
+
 circuit_breaker = CircuitBreaker(failure_threshold=3, recovery_timeout=30)
 
 try:
@@ -218,7 +220,8 @@ class GracefulDegradation:
         """Get current degradation level"""
         return self.degradation_level
 
-# Usage
+## Usage
+
 async def fallback_model_1(prompt: str) -> str:
     # Use a simpler model
     return "Fallback response 1"
@@ -407,7 +410,8 @@ class AIErrorHandler:
         """Third fallback: static response"""
         return "Service temporarily unavailable"
 
-# Usage
+## Usage
+
 ai_error_handler = AIErrorHandler()
 
 async def call_ai_model(prompt: str) -> str:

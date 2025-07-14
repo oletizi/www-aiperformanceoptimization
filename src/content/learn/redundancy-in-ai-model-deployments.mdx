@@ -6,7 +6,7 @@ readingTime: "13 minutes"
 category: ["Infrastructure & Tools", "Performance Optimization", "Advanced Techniques", "Resiliency"]
 ---
 
-# Redundancy in AI Model Deployments
+<!-- Removed duplicate H1: Redundancy in AI Model Deployments -->
 
 Redundancy is crucial for ensuring high availability and reliability in AI model deployments. This guide covers strategies for building resilient AI systems that can withstand failures and maintain service continuity.
 
@@ -115,11 +115,13 @@ class MultiRegionAIDeployment:
         
         raise Exception(f"Failed to invoke {model_name} in all regions")
 
-# Usage
+## Usage
+
 regions = ['us-east-1', 'us-west-2', 'eu-west-1', 'ap-southeast-1']
 deployment = MultiRegionAIDeployment(regions)
 
-# Deploy model to all regions
+## Deploy model to all regions
+
 model_config = {
     'code': open('model_lambda.zip', 'rb').read(),
     'memory_size': 1024,
@@ -434,18 +436,6 @@ class AutoScalingAISystem:
         # Scale down conditions
         elif (avg_cpu < 30 and avg_memory < 50 and queue_length < 10) and self.current_instances > self.min_instances:
             await self._scale_down()
-    
-    async def _scale_up(self):
-        """Scale up by adding instances"""
-        new_count = min(self.current_instances + 1, self.max_instances)
-        await self._update_instance_count(new_count)
-        print(f"📈 Scaled up to {new_count} instances")
-    
-    async def _scale_down(self):
-        """Scale down by removing instances"""
-        new_count = max(self.current_instances - 1, self.min_instances)
-        await self._update_instance_count(new_count)
-        print(f"📉 Scaled down to {new_count} instances")
 ```
 
 ## Disaster Recovery Strategies

@@ -145,12 +145,12 @@ def quantize_model(model, calibration_data):
     
     return quantized_model
 
-# Usage example
+## Usage example
 model = YourAIModel()
 calibration_data = load_calibration_dataset()
 quantized_model = quantize_model(model, calibration_data)
 
-# Save quantized model
+## Save quantized model
 torch.save(quantized_model.state_dict(), 'quantized_model.pth')
 ```
 

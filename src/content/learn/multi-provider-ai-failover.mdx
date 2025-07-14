@@ -6,7 +6,7 @@ readingTime: "12 minutes"
 category: ["Infrastructure & Tools", "Performance Optimization", "Advanced Techniques", "Resiliency"]
 ---
 
-# Multi-Provider AI Failover
+<!-- Removed duplicate H1: Multi-Provider AI Failover -->
 
 When your AI application depends on multiple providers (OpenAI, Anthropic, Google, etc.), implementing robust failover between them is crucial for maintaining reliability and performance.
 
@@ -306,7 +306,9 @@ async def setup_multi_provider_system():
     
     return router
 
-# Usage example
+## Usage example
+
+```python
 async def example_usage():
     router = await setup_multi_provider_system()
     
