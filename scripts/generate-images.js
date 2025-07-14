@@ -112,6 +112,73 @@ const IMAGE_CONFIGS = {
         accent: 'warm orange and teal'
       }
     ]
+  },
+
+  // Learning article cards (for /learn page cards and individual article heroes)
+  learningArticles: {
+    ...BASE_CONFIGS.featureCard,
+    images: [
+      {
+        id: 'getting-started',
+        title: 'Getting Started with AI Resource Optimization',
+        specificElements: 'Abstract beginner-friendly elements including simple geometric shapes, upward arrows showing growth, lightbulb icons for learning, foundation blocks, and step-by-step progression symbols.',
+        accentColor: 'soft greens'
+      },
+      {
+        id: 'cost-optimization-strategies',
+        title: 'AI Cost Optimization Strategies',
+        specificElements: 'Abstract cost reduction elements including downward trending arrows, dollar symbols with optimization graphics, efficiency charts, budget controls, and financial optimization icons.',
+        accentColor: 'purples and blues'
+      },
+      {
+        id: 'performance-monitoring',
+        title: 'AI Performance Monitoring',
+        specificElements: 'Abstract monitoring elements including dashboard graphs, real-time metrics displays, performance charts, system health indicators, and monitoring screens.',
+        accentColor: 'oranges and teals'
+      },
+      {
+        id: 'major-ai-provider-integration',
+        title: 'Major AI Provider Integration',
+        specificElements: 'Abstract integration elements including interconnected nodes, API connection symbols, multiple provider logos abstracted, integration patterns, and unified system diagrams.',
+        accentColor: 'blues and greens'
+      },
+      {
+        id: 'error-handling-and-recovery',
+        title: 'AI Error Handling and Recovery',
+        specificElements: 'Abstract reliability elements including shield symbols, error recovery patterns, circuit breaker icons, failover mechanisms, and system resilience graphics.',
+        accentColor: 'reds and oranges'
+      },
+      {
+        id: 'unified-ai-model-management',
+        title: 'Unified AI Model Management',
+        specificElements: 'Abstract management elements including centralized hub diagrams, model organization charts, unified control panels, and systematic arrangement patterns.',
+        accentColor: 'teals and blues'
+      },
+      {
+        id: 'monitoring-ai-model-health',
+        title: 'Monitoring AI Model Health',
+        specificElements: 'Abstract health monitoring elements including vital signs graphics, health check indicators, system status displays, and diagnostic monitoring patterns.',
+        accentColor: 'greens and blues'
+      },
+      {
+        id: 'intelligent-routing',
+        title: 'Intelligent AI Routing',
+        specificElements: 'Abstract routing elements including smart pathways, traffic distribution patterns, intelligent decision trees, and optimized flow diagrams.',
+        accentColor: 'purples and teals'
+      },
+      {
+        id: 'token-optimization',
+        title: 'AI Token Optimization',
+        specificElements: 'Abstract token optimization elements including compression symbols, efficiency indicators, token flow diagrams, and optimization patterns.',
+        accentColor: 'golds and oranges'
+      },
+      {
+        id: 'popular-optimization-platforms',
+        title: 'Popular AI Optimization Platforms',
+        specificElements: 'Abstract platform comparison elements including side-by-side comparison charts, platform selection matrices, feature comparison grids, and evaluation frameworks.',
+        accentColor: 'blues and purples'
+      }
+    ]
   }
 };
 

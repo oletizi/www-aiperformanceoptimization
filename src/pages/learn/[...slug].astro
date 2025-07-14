@@ -4,6 +4,18 @@ import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
 import Section from '../../components/Section.astro';
 
+// Generated learning article images
+import gettingStartedImg from '../../assets/images/getting-started.jpg';
+import costOptimizationImg from '../../assets/images/cost-optimization-strategies.jpg';
+import performanceMonitoringImg from '../../assets/images/performance-monitoring.jpg';
+import providerIntegrationImg from '../../assets/images/major-ai-provider-integration.jpg';
+import errorHandlingImg from '../../assets/images/error-handling-and-recovery.jpg';
+import unifiedManagementImg from '../../assets/images/unified-ai-model-management.jpg';
+import modelHealthImg from '../../assets/images/monitoring-ai-model-health.jpg';
+import intelligentRoutingImg from '../../assets/images/intelligent-routing.jpg';
+import tokenOptimizationImg from '../../assets/images/token-optimization.jpg';
+import optimizationPlatformsImg from '../../assets/images/popular-optimization-platforms.jpg';
+
 export async function getStaticPaths() {
   const learningPosts = await getCollection('learn');
   return learningPosts.map((post) => ({
@@ -15,10 +27,30 @@ export async function getStaticPaths() {
 const post = Astro.props;
 const { Content } = await post.render();
 
+// Image mapping for learning articles
+const articleImages = {
+  'getting-started': gettingStartedImg,
+  'cost-optimization-strategies': costOptimizationImg,
+  'performance-monitoring': performanceMonitoringImg,
+  'major-ai-provider-integration': providerIntegrationImg,
+  'error-handling-and-recovery': errorHandlingImg,
+  'unified-ai-model-management': unifiedManagementImg,
+  'monitoring-ai-model-health': modelHealthImg,
+  'intelligent-routing': intelligentRoutingImg,
+  'token-optimization': tokenOptimizationImg,
+  'popular-optimization-platforms': optimizationPlatformsImg,
+};
+
+// Function to get image for article
+function getArticleImage(slug) {
+  return articleImages[slug] || null;
+}
+
 // SEO metadata
 const title = `${post.data.title} | AI Performance Optimization`;
 const description = post.data.description;
 const canonicalURL = `https://aiperformanceoptimization.com/learn/${post.slug}`;
+const articleImage = getArticleImage(post.slug);
 ---
 
 <Layout 
@@ -33,6 +65,7 @@ const canonicalURL = `https://aiperformanceoptimization.com/learn/${post.slug}`;
     description={post.data.description}
     showCta={false}
     size="small"
+    backgroundImage={articleImage}
   />
 
   <Section>

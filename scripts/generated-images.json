@@ -1,10 +1,82 @@
 [
   {
-    "id": "learning-center-hero",
-    "title": "AI Performance Learning Center",
-    "filename": "learning-center-hero.png",
-    "filepath": "/Users/orion/work/www-aiperformanceoptimization/public/images/learning-center-hero.png",
-    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3YAGvXPsnKIrz4vEV4pbNTdo/user-R9yGlVszJQSuG7fps4d1P5dl/img-dCX1ETqrdehJ63kge8954jZt.png?st=2025-07-14T04%3A41%3A32Z&se=2025-07-14T06%3A41%3A32Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-13T21%3A15%3A33Z&ske=2025-07-14T21%3A15%3A33Z&sks=b&skv=2024-08-04&sig=95wcgjELXYb3rReJswtuB6jXCMaHhsyNnX2khNNP2Xw%3D",
-    "type": "learningHeroes"
+    "id": "getting-started",
+    "title": "Getting Started with AI Resource Optimization",
+    "filename": "getting-started.png",
+    "filepath": "/Users/orion/work/www-aiperformanceoptimization/public/images/getting-started.png",
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3YAGvXPsnKIrz4vEV4pbNTdo/user-R9yGlVszJQSuG7fps4d1P5dl/img-tGeemLoVT5xXuhpzM61QAOOW.png?st=2025-07-14T05%3A01%3A31Z&se=2025-07-14T07%3A01%3A31Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-13T12%3A00%3A57Z&ske=2025-07-14T12%3A00%3A57Z&sks=b&skv=2024-08-04&sig=e6ZEo1NthDedHWZpIPpLZZZSyCdhlU3MLy17qntvUCA%3D",
+    "type": "learningArticles"
+  },
+  {
+    "id": "cost-optimization-strategies",
+    "title": "AI Cost Optimization Strategies",
+    "filename": "cost-optimization-strategies.png",
+    "filepath": "/Users/orion/work/www-aiperformanceoptimization/public/images/cost-optimization-strategies.png",
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3YAGvXPsnKIrz4vEV4pbNTdo/user-R9yGlVszJQSuG7fps4d1P5dl/img-cuavfsp0bzCpiVYb1xlc8r6g.png?st=2025-07-14T05%3A01%3A49Z&se=2025-07-14T07%3A01%3A49Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-13T11%3A15%3A26Z&ske=2025-07-14T11%3A15%3A26Z&sks=b&skv=2024-08-04&sig=CUK3bg8yfP4Ct5Q5gm8QhCqDPhIzCZORunR9DCwPPI0%3D",
+    "type": "learningArticles"
+  },
+  {
+    "id": "performance-monitoring",
+    "title": "AI Performance Monitoring",
+    "filename": "performance-monitoring.png",
+    "filepath": "/Users/orion/work/www-aiperformanceoptimization/public/images/performance-monitoring.png",
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3YAGvXPsnKIrz4vEV4pbNTdo/user-R9yGlVszJQSuG7fps4d1P5dl/img-QiEDiy7BDqAcDGIxbrOgiThd.png?st=2025-07-14T05%3A02%3A08Z&se=2025-07-14T07%3A02%3A08Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-14T03%3A13%3A18Z&ske=2025-07-15T03%3A13%3A18Z&sks=b&skv=2024-08-04&sig=sJ5%2B7zwpbhb1odFYCL%2BQpGWGlPGmt9gXXJ9LHHxlm1U%3D",
+    "type": "learningArticles"
+  },
+  {
+    "id": "major-ai-provider-integration",
+    "title": "Major AI Provider Integration",
+    "filename": "major-ai-provider-integration.png",
+    "filepath": "/Users/orion/work/www-aiperformanceoptimization/public/images/major-ai-provider-integration.png",
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3YAGvXPsnKIrz4vEV4pbNTdo/user-R9yGlVszJQSuG7fps4d1P5dl/img-TRELTF41ZQqvtum9icyPDQy6.png?st=2025-07-14T05%3A02%3A27Z&se=2025-07-14T07%3A02%3A27Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-13T19%3A20%3A34Z&ske=2025-07-14T19%3A20%3A34Z&sks=b&skv=2024-08-04&sig=B50WaJjKhoALKBea9Phhx8fCzhxU%2BpBhzi4KPiAoKag%3D",
+    "type": "learningArticles"
+  },
+  {
+    "id": "error-handling-and-recovery",
+    "title": "AI Error Handling and Recovery",
+    "filename": "error-handling-and-recovery.png",
+    "filepath": "/Users/orion/work/www-aiperformanceoptimization/public/images/error-handling-and-recovery.png",
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3YAGvXPsnKIrz4vEV4pbNTdo/user-R9yGlVszJQSuG7fps4d1P5dl/img-5HRKjU7WQaNxjPf816bNviEu.png?st=2025-07-14T05%3A02%3A48Z&se=2025-07-14T07%3A02%3A48Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-13T17%3A39%3A47Z&ske=2025-07-14T17%3A39%3A47Z&sks=b&skv=2024-08-04&sig=JknLuchHsDvU27v9AYtfdq/ffn579x2yhmdqZWaE90o%3D",
+    "type": "learningArticles"
+  },
+  {
+    "id": "unified-ai-model-management",
+    "title": "Unified AI Model Management",
+    "filename": "unified-ai-model-management.png",
+    "filepath": "/Users/orion/work/www-aiperformanceoptimization/public/images/unified-ai-model-management.png",
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3YAGvXPsnKIrz4vEV4pbNTdo/user-R9yGlVszJQSuG7fps4d1P5dl/img-5t7V7yCOjM2SnQmwHTviUCAN.png?st=2025-07-14T05%3A03%3A06Z&se=2025-07-14T07%3A03%3A06Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-13T08%3A51%3A02Z&ske=2025-07-14T08%3A51%3A02Z&sks=b&skv=2024-08-04&sig=vH5LMMIpGS4y8F%2Bm3vrOp72SLHBs9HTlZ26lv/eaIP8%3D",
+    "type": "learningArticles"
+  },
+  {
+    "id": "monitoring-ai-model-health",
+    "title": "Monitoring AI Model Health",
+    "filename": "monitoring-ai-model-health.png",
+    "filepath": "/Users/orion/work/www-aiperformanceoptimization/public/images/monitoring-ai-model-health.png",
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3YAGvXPsnKIrz4vEV4pbNTdo/user-R9yGlVszJQSuG7fps4d1P5dl/img-lfSMYuxjdAleIGors6EtgjVV.png?st=2025-07-14T05%3A03%3A24Z&se=2025-07-14T07%3A03%3A24Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-13T16%3A07%3A15Z&ske=2025-07-14T16%3A07%3A15Z&sks=b&skv=2024-08-04&sig=B/uMFPgntTcw3/qpyknBuS/3njHhqTKynKYncNaj2Ac%3D",
+    "type": "learningArticles"
+  },
+  {
+    "id": "intelligent-routing",
+    "title": "Intelligent AI Routing",
+    "filename": "intelligent-routing.png",
+    "filepath": "/Users/orion/work/www-aiperformanceoptimization/public/images/intelligent-routing.png",
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3YAGvXPsnKIrz4vEV4pbNTdo/user-R9yGlVszJQSuG7fps4d1P5dl/img-eGj15O68S0zQHyUtCCPPYxYD.png?st=2025-07-14T05%3A03%3A44Z&se=2025-07-14T07%3A03%3A44Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-13T17%3A38%3A05Z&ske=2025-07-14T17%3A38%3A05Z&sks=b&skv=2024-08-04&sig=r/1LHwHSfvAKz4x6lsl6NLHXmlF1XqWty1PTZYZ2/gI%3D",
+    "type": "learningArticles"
+  },
+  {
+    "id": "token-optimization",
+    "title": "AI Token Optimization",
+    "filename": "token-optimization.png",
+    "filepath": "/Users/orion/work/www-aiperformanceoptimization/public/images/token-optimization.png",
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3YAGvXPsnKIrz4vEV4pbNTdo/user-R9yGlVszJQSuG7fps4d1P5dl/img-8DWqJN0JFozzufDxOZRWGVzJ.png?st=2025-07-14T05%3A04%3A03Z&se=2025-07-14T07%3A04%3A03Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-13T14%3A00%3A38Z&ske=2025-07-14T14%3A00%3A38Z&sks=b&skv=2024-08-04&sig=zNxo92RQY28GCyxFKsUGZdQsPsO%2BL8MssopsM8YwQlg%3D",
+    "type": "learningArticles"
+  },
+  {
+    "id": "popular-optimization-platforms",
+    "title": "Popular AI Optimization Platforms",
+    "filename": "popular-optimization-platforms.png",
+    "filepath": "/Users/orion/work/www-aiperformanceoptimization/public/images/popular-optimization-platforms.png",
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3YAGvXPsnKIrz4vEV4pbNTdo/user-R9yGlVszJQSuG7fps4d1P5dl/img-mlCSDiSlpwIqVvsgRYILqDTx.png?st=2025-07-14T05%3A04%3A20Z&se=2025-07-14T07%3A04%3A20Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-13T08%3A25%3A03Z&ske=2025-07-14T08%3A25%3A03Z&sks=b&skv=2024-08-04&sig=JoakUgsZlepVdxSkgt8JGIBWOadplsdcp1JmIgIcFuo%3D",
+    "type": "learningArticles"
   }
 ]
