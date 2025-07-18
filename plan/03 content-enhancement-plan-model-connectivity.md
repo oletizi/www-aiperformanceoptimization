@@ -1,7 +1,7 @@
 # AI Model Connectivity Management Content Enhancement Plan
 
 ## Original Prompt
-"what google searches would someone make to answer the question 'how do i manage connectivity to all these different models'? Document and implement a plan to generate SEO articles pages in the learning center (/learn) to match those searches; use the search text as the page slug and the article title. The article should answer the question (or implied question) posed by the search term"
+"what google searches would someone make to answer the question 'how do i manage connectivity to all these different models'? Document (in the 'plan' directory) and implement a plan to generate SEO articles pages in the learning center (/learn) to match those searches; use the search text as the page slug and the article title. The article should answer the question (or implied question) posed by the search term"
 
 ## Identified Search Categories
 

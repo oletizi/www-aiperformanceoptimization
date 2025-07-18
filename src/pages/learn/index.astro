@@ -135,28 +135,30 @@ const siteNavHeight = 4;
 
 <style>
   .category-nav {
-    background: var(--tetra-white, #fff);
-    /* Remove border-radius for flush look */
-    border-radius: 0;
-    margin: 0 0 2.5rem 0;
-    padding: 0.5rem 2rem;
-    /* Stronger drop shadow for overlay effect */
-    box-shadow: 0 6px 24px 0 rgba(27,54,93,0.10), 0 1.5px 0 0 var(--tetra-gray, #F5F7FA);
     position: sticky;
     top: 4rem;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 110;
-    overflow-x: auto;
+    margin: 0 0 2.5rem 0;
+    border-radius: 0;
     border-bottom: 1px solid var(--tetra-gray, #F5F7FA);
+    overflow-x: auto;
+    background: var(--tetra-white, #fff);
+    box-shadow: 0 6px 24px 0 rgba(27,54,93,0.10), 0 1.5px 0 0 var(--tetra-gray, #F5F7FA);
   }
   .category-nav ul {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin: 0 auto;
+    padding: 0.5rem 2rem;
     justify-content: flex-start;
     align-items: center;
+    max-width: 1200px;
+    box-sizing: border-box;
   }
   .category-nav a {
     color: var(--tetra-primary, #1B365D);
@@ -174,11 +176,11 @@ const siteNavHeight = 4;
   }
   @media (max-width: 600px) {
     .category-nav {
-      padding: 0.5rem 0.5rem;
       font-size: 0.95rem;
     }
     .category-nav ul {
       gap: 0.7rem;
+      padding: 0.5rem 0.5rem;
     }
     .category-nav a {
       padding: 0.4rem 0.7rem;
