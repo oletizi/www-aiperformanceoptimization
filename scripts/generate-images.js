@@ -190,6 +190,12 @@ const IMAGE_CONFIGS = {
         title: 'Popular AI Optimization Platforms',
         specificElements: 'Abstract platform comparison elements including side-by-side comparison charts, platform selection matrices, feature comparison grids, and evaluation frameworks.',
         accentColor: 'blues and purples'
+      },
+      {
+        id: 'ai-model-routing-management-platforms-comparison',
+        title: 'AI Model Routing and Management Platforms',
+        specificElements: 'Abstract routing and management elements including interconnected routing paths, platform comparison matrices, management dashboards, intelligent routing symbols, and developer tools icons.',
+        accentColor: 'teals and blues'
       }
     ]
   }
@@ -271,6 +277,16 @@ async function generateImageSet(setName, config, outputDir = 'public/images') {
   
   const results = [];
   for (const imageConfig of config.images) {
+    // Check if image already exists
+    const imagesDir = path.join(__dirname, '..', outputDir);
+    const filename = `${imageConfig.id}.png`;
+    const filepath = path.join(imagesDir, filename);
+    
+    if (fs.existsSync(filepath)) {
+      console.log(`Image already exists for ${imageConfig.title}, skipping.`);
+      continue;
+    }
+    
     const result = await generateImage(imageConfig, config, outputDir);
     if (result) {
       result.type = setName;
