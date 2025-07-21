@@ -71,6 +71,28 @@ npm run build
 npm run preview
 ```
 
+### Sitemap Generation
+
+The project includes an automated sitemap generator that scans your content and creates an up-to-date sitemap.xml file.
+
+```bash
+# Generate sitemap only
+npm run sitemap
+
+# Generate sitemap and build for production
+npm run build:sitemap
+```
+
+The sitemap generator:
+- Automatically discovers all static pages
+- Scans the `/src/content/learn/` directory for articles
+- Scans the `/src/content/blog/` directory for blog posts
+- Updates lastmod dates automatically
+- Sets appropriate priorities and change frequencies
+- Outputs to `/public/sitemap.xml`
+
+**Note**: Run `npm run sitemap` whenever you add, edit, or remove content to keep your sitemap current.
+
 ## 📄 Pages Overview
 
 ### Homepage (`/`)
