@@ -8,39 +8,39 @@ interface Props {
 }
 
 const {
-  title = "Managed Solution",
-  description = "Tetrate Agent Router Service provides intelligent routing for GenAI developers with unified model access, automatic fallback, cost management, and cross-provider monitoring.",
+  title = "AI Model Routing Solutions",
+  description = "Explore comprehensive AI model routing and management platforms to find the right solution for your needs. Compare features, pricing, and capabilities across leading providers.",
   features = [
-    "Unified model access across providers",
-    "Automatic fallback and failover",
-    "Cost optimization and monitoring",
-    "Enterprise-grade reliability"
+    "Compare routing platforms side-by-side",
+    "Evaluate pricing and features",
+    "Understand enterprise requirements",
+    "Find the best fit for your use case"
   ],
-  ctaText = "Learn More",
-  ctaUrl = "https://tetr8.io/get-agent-router-service"
+  ctaText = "Compare Platforms",
+  ctaUrl = "/learn/ai-model-routing-management-platforms-comparison"
 } = Astro.props;
 ---
 
-<div class="tetrate-card">
-  <div class="tetrate-header">
-    <div class="tetrate-icon">🚀</div>
+<div class="service-card">
+  <div class="service-header">
+    <div class="service-icon">🔍</div>
     <h4>{title}</h4>
   </div>
-  <div class="tetrate-content">
-    <p><strong>Tetrate Agent Router Service</strong> {description}</p>
-    <ul class="tetrate-features">
+  <div class="service-content">
+    <p>{description}</p>
+    <ul class="service-features">
       {features.map(feature => (
         <li>{feature}</li>
       ))}
     </ul>
-    <a href={ctaUrl} class="tetrate-cta" target="_blank" rel="noopener noreferrer">
+    <a href={ctaUrl} class="service-cta">
       {ctaText} →
     </a>
   </div>
 </div>
 
 <style>
-  .tetrate-card {
+  .service-card {
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     border: 1px solid #cbd5e1;
     border-radius: 12px;
@@ -51,7 +51,7 @@ const {
     overflow: hidden;
   }
 
-  .tetrate-card::before {
+  .service-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -61,14 +61,14 @@ const {
     background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
   }
 
-  .tetrate-header {
+  .service-header {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     margin-bottom: 1rem;
   }
 
-  .tetrate-icon {
+  .service-icon {
     font-size: 1.5rem;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -webkit-background-clip: text;
@@ -76,33 +76,33 @@ const {
     background-clip: text;
   }
 
-  .tetrate-header h4 {
+  .service-header h4 {
     margin: 0;
     color: #1e293b;
     font-size: 1.1rem;
     font-weight: 600;
   }
 
-  .tetrate-content p {
+  .service-content p {
     color: #475569;
     margin-bottom: 1rem;
     line-height: 1.6;
   }
 
-  .tetrate-features {
+  .service-features {
     list-style: none;
     padding: 0;
     margin: 1rem 0;
   }
 
-  .tetrate-features li {
+  .service-features li {
     color: #64748b;
     padding: 0.25rem 0;
     position: relative;
     padding-left: 1.25rem;
   }
 
-  .tetrate-features li::before {
+  .service-features li::before {
     content: '✓';
     position: absolute;
     left: 0;
@@ -110,7 +110,7 @@ const {
     font-weight: bold;
   }
 
-  .tetrate-cta {
+  .service-cta {
     display: inline-block;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -123,17 +123,17 @@ const {
     margin-top: 1rem;
   }
 
-  .tetrate-cta:hover {
+  .service-cta:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
   }
 
   @media (max-width: 768px) {
-    .tetrate-card {
+    .service-card {
       padding: 1rem;
     }
     
-    .tetrate-header {
+    .service-header {
       flex-direction: column;
       text-align: center;
       gap: 0.5rem;
