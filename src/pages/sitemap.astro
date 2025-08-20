@@ -1,0 +1,297 @@
+---
+// Import components
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// Get all learning articles
+const allLearningPosts = await getCollection('learn');
+
+// Helper: normalize categories to array
+function getCategories(post: any): string[] {
+  const cat = post.data.category;
+  if (!cat) return [];
+  return Array.isArray(cat) ? cat : [cat];
+}
+
+// Build category -> posts map
+const categoryMap: Record<string, typeof allLearningPosts> = {};
+for (const post of allLearningPosts) {
+  for (const cat of getCategories(post)) {
+    if (!categoryMap[cat]) categoryMap[cat] = [];
+    categoryMap[cat].push(post);
+  }
+}
+
+// Define user journey order for consistent organization
+const journeyOrder = [
+  "Beginner's Guide",
+  "Integration",
+  "Infrastructure & Tools",
+  "Performance Optimization",
+  "Cost Optimization",
+  "Advanced Techniques",
+  "Resiliency",
+  "Enterprise Solutions"
+];
+
+const allCategories = Object.keys(categoryMap);
+const sortedCategories = [
+  ...journeyOrder.filter((cat) => allCategories.includes(cat)),
+  ...allCategories.filter((cat) => !journeyOrder.includes(cat)).sort((a, b) => a.localeCompare(b))
+];
+
+// Sort posts within each category
+for (const cat of sortedCategories) {
+  categoryMap[cat].sort((a: any, b: any) => a.data.title.localeCompare(b.data.title));
+}
+
+// SEO metadata
+const title = "Site Map - AI Performance Optimization";
+const description = "Complete site map of AI Performance Optimization website. Find all learning resources, guides, and content organized by category.";
+const canonicalURL = "https://aiperformanceoptimization.com/sitemap";
+---
+
+<Layout 
+  title={title} 
+  description={description} 
+  canonicalURL={canonicalURL}
+  currentPage="sitemap"
+>
+  <div class="sitemap-container">
+    <div class="sitemap-header">
+      <h1>Site Map</h1>
+      <p>Complete overview of all content and learning resources on AI Performance Optimization</p>
+    </div>
+
+    <div class="sitemap-section">
+      <h2>Main Pages</h2>
+      <ul class="sitemap-list main-pages">
+        <li><a href="/">Home</a> - AI Performance Optimization main page</li>
+        <li><a href="/learn">Learning Center</a> - Comprehensive guides and tutorials</li>
+        <li><a href="/strategies">Strategies</a> - AI optimization strategies and approaches</li>
+        <li><a href="/tools">Tools</a> - AI optimization tools and platforms</li>
+        <li><a href="/model-connectivity">Model Connectivity</a> - AI model connection and integration</li>
+        <li><a href="/blog">Blog</a> - Latest insights and updates</li>
+      </ul>
+    </div>
+
+    <div class="sitemap-section">
+      <h2>Learning Resources by Category</h2>
+      
+      {sortedCategories.map(category => (
+        <div class="category-section">
+          <h3>{category}</h3>
+          <ul class="sitemap-list category-posts">
+            {categoryMap[category].map(post => (
+              <li>
+                <a href={`/learn/${post.slug}`}>{post.data.title}</a>
+                {post.data.description && (
+                  <span class="post-description"> - {post.data.description}</span>
+                )}
+                {post.data.readingTime && (
+                  <span class="reading-time"> ({post.data.readingTime})</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="sitemap-section">
+      <h2>Quick Navigation</h2>
+      <div class="quick-nav-grid">
+        <div class="quick-nav-item">
+          <h4>Getting Started</h4>
+          <a href="/learn/getting-started">Beginner's Guide</a>
+        </div>
+        <div class="quick-nav-item">
+          <h4>Cost Optimization</h4>
+          <a href="/learn/cost-optimization-strategies">Cost Strategies</a>
+          <a href="/learn/automatic-token-optimization">Token Optimization</a>
+        </div>
+        <div class="quick-nav-item">
+          <h4>Performance</h4>
+          <a href="/learn/performance-monitoring">Performance Monitoring</a>
+          <a href="/learn/advanced-optimization-techniques">Advanced Techniques</a>
+        </div>
+        <div class="quick-nav-item">
+          <h4>Reliability</h4>
+          <a href="/learn/ai-model-failover-strategies">Failover Strategies</a>
+          <a href="/learn/error-handling-and-recovery">Error Handling</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sitemap-footer">
+      <p>This sitemap helps search engines discover all content on our AI Performance Optimization website. For the XML sitemap, visit <a href="/sitemap.xml">/sitemap.xml</a></p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .sitemap-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .sitemap-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  .sitemap-header h1 {
+    font-size: 2.5rem;
+    color: #1f2937;
+    margin-bottom: 1rem;
+  }
+
+  .sitemap-header p {
+    font-size: 1.1rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .sitemap-section {
+    margin-bottom: 3rem;
+  }
+
+  .sitemap-section h2 {
+    font-size: 1.8rem;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .sitemap-section h3 {
+    font-size: 1.4rem;
+    color: #374151;
+    margin: 2rem 0 1rem 0;
+    padding-left: 1rem;
+    border-left: 3px solid #3b82f6;
+  }
+
+  .sitemap-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sitemap-list li {
+    margin-bottom: 0.75rem;
+    padding: 0.5rem 0;
+  }
+
+  .sitemap-list a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .sitemap-list a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+
+  .post-description {
+    color: #6b7280;
+    font-style: italic;
+  }
+
+  .reading-time {
+    color: #059669;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .category-section {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-radius: 8px;
+  }
+
+  .quick-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .quick-nav-item {
+    background-color: #f3f4f6;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+  }
+
+  .quick-nav-item h4 {
+    color: #374151;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .quick-nav-item a {
+    display: block;
+    color: #2563eb;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0;
+    transition: color 0.2s ease;
+  }
+
+  .quick-nav-item a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+
+  .sitemap-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem 0;
+    border-top: 2px solid #e5e7eb;
+    color: #6b7280;
+  }
+
+  .sitemap-footer a {
+    color: #2563eb;
+    text-decoration: none;
+  }
+
+  .sitemap-footer a:hover {
+    text-decoration: underline;
+  }
+
+  .main-pages li {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .category-posts li {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .sitemap-container {
+      padding: 1rem 0.5rem;
+    }
+
+    .sitemap-header h1 {
+      font-size: 2rem;
+    }
+
+    .quick-nav-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .category-section {
+      padding: 0.75rem;
+    }
+  }
+</style>

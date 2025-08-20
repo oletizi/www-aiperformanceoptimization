@@ -24,7 +24,8 @@ function getStaticPages() {
     { path: '/learn', priority: '0.9', changefreq: 'weekly' },
     { path: '/model-connectivity', priority: '0.7', changefreq: 'monthly' },
     { path: '/tools', priority: '0.7', changefreq: 'monthly' },
-    { path: '/strategies', priority: '0.7', changefreq: 'monthly' }
+    { path: '/strategies', priority: '0.7', changefreq: 'monthly' },
+    { path: '/sitemap', priority: '0.6', changefreq: 'monthly' }
   ];
 
   return staticPages.map(page => ({
